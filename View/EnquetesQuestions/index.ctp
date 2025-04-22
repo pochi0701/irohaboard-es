@@ -33,7 +33,7 @@
 	{
 		$course_url = ['controller' => 'contents', 'action' => 'index', $content['Course']['id']];
 		$this->Html->addCrumb(
-			'<span class="glyphicon glyphicon-book" aria-hidden="true"></span> コース一覧',
+			'<span class="glyphicon glyphicon-book" aria-hidden="true"></span> Lista de cursos',
 			['controller' => 'users_courses','action' => 'index'],
 			['escape' => false]
 		);
@@ -116,7 +116,7 @@
 
 			?>
 			<div class="panel panel-info question question-<?= $question_index;?>">
-				<div class="panel-heading"><?= __('問').$question_index;?></div>
+				<div class="panel-heading"><?= __('Pregunta').$question_index;?></div>
 				<div class="panel-body">
 					<!--問題タイトル-->
 					<h4><?= h($title) ?></h4>
@@ -141,11 +141,11 @@
 			if (!$is_record)
 			{
 				echo $this->Form->hidden('study_sec');
-				echo '<input type="button" value="'.__('送信').'" class="btn btn-primary btn-lg btn-score" onclick="showConfirm()">';
+				echo '<input type="button" value="'.__('Enviar').'" class="btn btn-primary btn-lg btn-score" onclick="showConfirm()">';
 				echo '&nbsp;';
 			}
 			
-			echo '<input type="button" value="'.__('戻る').'" class="btn btn-default btn-lg" onclick="location.href=\''.Router::url($course_url).'\'">';
+			echo '<input type="button" value="'.__('Volver').'" class="btn btn-default btn-lg" onclick="location.href=\''.Router::url($course_url).'\'">';
 			echo '</div><!--end-->';
 			echo $this->Form->end();
 		?>
@@ -157,16 +157,16 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-				<h4 class="modal-title"><?= __('送信確認');?></h4>
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+				<h4 class="modal-title"><?= __('Confirmar envío');?></h4>
 			</div>
 			<div class="modal-body">
-				<p class="answer-incomplete text-danger"><b>※未回答の項目があります。</b></p>
-				<p><?= __('送信してよろしいですか？');?></p>
+				<p class="answer-incomplete text-danger"><b>※Hay preguntas sin responder.</b></p>
+				<p><?= __('¿Desea enviar las respuestas?');?></p>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal"><?= __('キャンセル');?></button>
-				<button type="button" class="btn btn-primary btn-score" onclick="sendData();"><?= __('送信');?></button>
+				<button type="button" class="btn btn-default" data-dismiss="modal"><?= __('Cancelar');?></button>
+				<button type="button" class="btn btn-primary btn-score" onclick="sendData();"><?= __('Enviar');?></button>
 			</div>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->

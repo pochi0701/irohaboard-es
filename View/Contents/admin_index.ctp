@@ -49,26 +49,26 @@
 <div class="admin-contents-index">
 	<div class="ib-breadcrumb">
 	<?php
-		$this->Html->addCrumb(__('コース一覧'), ['controller' => 'courses', 'action' => 'index']);
+		$this->Html->addCrumb(__('Lista de cursos'), ['controller' => 'courses', 'action' => 'index']);
 		$this->Html->addCrumb(h($course['Course']['title']));
 
 		echo $this->Html->getCrumbs(' / ');
 	?>
 	</div>
-	<div class="ib-page-title"><?= __('コンテンツ一覧'); ?></div>
+	<div class="ib-page-title"><?= __('Lista de contenidos'); ?></div>
 	<div class="buttons_container">
-		<button type="button" class="btn btn-primary btn-add" onclick="location.href='<?= Router::url(['action' => 'add', $course['Course']['id']]) ?>'">+ 追加</button>
+		<button type="button" class="btn btn-primary btn-add" onclick="location.href='<?= Router::url(['action' => 'add', $course['Course']['id']]) ?>'">+ Agregar</button>
 	</div>
-	<div class="alert alert-warning"><?= __('ドラッグアンドドロップでコンテンツの並び順が変更できます。'); ?></div>
+	<div class="alert alert-warning"><?= __('Puede cambiar el orden de los contenidos arrastrando y soltando.'); ?></div>
 	<table id='sortable-table'>
 	<thead>
 	<tr>
-		<th><?= __('コンテンツ名'); ?></th>
-		<th nowrap><?= __('コンテンツ種別'); ?></th>
-		<th class="text-center"><?= __('ステータス'); ?></th>
-		<th class="ib-col-date"><?= __('作成日時'); ?></th>
-		<th class="ib-col-date"><?= __('更新日時'); ?></th>
-		<th class="ib-col-action"><?= __('Actions'); ?></th>
+		<th><?= __('Nombre del contenido'); ?></th>
+		<th nowrap><?= __('Tipo de contenido'); ?></th>
+		<th class="text-center"><?= __('Estado'); ?></th>
+		<th class="ib-col-date"><?= __('Fecha de creación'); ?></th>
+		<th class="ib-col-date"><?= __('Fecha de actualización'); ?></th>
+		<th class="ib-col-action"><?= __('Acciones'); ?></th>
 	</tr>
 	</thead>
 	<tbody>
@@ -94,11 +94,11 @@
 		<td class="ib-col-date"><?= Utils::getYMDHN($content['Content']['created']); ?>&nbsp;</td>
 		<td class="ib-col-date"><?= Utils::getYMDHN($content['Content']['modified']); ?>&nbsp;</td>
 		<td class="ib-col-action">
-			<button type="button" class="btn btn-success" onclick="location.href='<?= Router::url(['action' => 'edit', $course['Course']['id'], $content['Content']['id']]) ?>'"><?= __('編集')?></button>
-			<button type="button" class="btn btn-info" onclick="location.href='<?= Router::url(['action' => 'copy', $course['Course']['id'], $content['Content']['id']]) ?>'"><?= __('複製')?></button>
+			<button type="button" class="btn btn-success" onclick="location.href='<?= Router::url(['action' => 'edit', $course['Course']['id'], $content['Content']['id']]) ?>'"><?= __('Editar')?></button>
+			<button type="button" class="btn btn-info" onclick="location.href='<?= Router::url(['action' => 'copy', $course['Course']['id'], $content['Content']['id']]) ?>'"><?= __('Copiar')?></button>
 			<?php if($loginedUser['role'] == 'admin') {?>
-			<?= $this->Form->postLink(__('削除'), ['action' => 'delete', $content['Content']['id']], ['class'=>'btn btn-danger'], 
-				__('[%s] を削除してもよろしいですか?', $content['Content']['title']));?>
+			<?= $this->Form->postLink(__('Eliminar'), ['action' => 'delete', $content['Content']['id']], ['class'=>'btn btn-danger'], 
+				__('¿Está seguro de que desea eliminar [%s]?', $content['Content']['title']));?>
 			<?php }?>
 			<?= $this->Form->hidden('id', ['id'=>'', 'class'=>'content_id', 'value'=>$content['Content']['id']]);?>
 		</td>

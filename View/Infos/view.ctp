@@ -8,7 +8,7 @@
 	);
 
 	$this->Html->addCrumb(
-		'<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> '.__('お知らせ一覧'),
+		'<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> '.__('Aviso general'),
 		['controller' => 'infos','action' => 'index'],
 		['escape' => false]
 	);

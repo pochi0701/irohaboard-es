@@ -321,7 +321,7 @@ class RecordsController extends AppController
 		
 		if($this->Record->save($data))
 		{
-			$this->Flash->success(__('学習履歴を保存しました'));
+			$this->Flash->success(__('El registro ha sido guardado'));
 			return $this->redirect([
 				'controller' => 'contents',
 				'action' => 'index',
@@ -330,7 +330,7 @@ class RecordsController extends AppController
 		}
 		else
 		{
-			$this->Flash->error(__('The record could not be saved. Please, try again.'));
+			$this->Flash->error(__('No se pudo guardar el registro. Por favor, intente nuevamente.'));
 		}
 	}
 }

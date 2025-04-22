@@ -101,7 +101,7 @@ class UsersController extends AppController
 			else
 			{
 				$this->writeLog('login_error', $this->request->data['User']['username']);
-				$this->Flash->error(__('ログインID、もしくはパスワードが正しくありません'));
+				$this->Flash->error(__('ID de inicio de sesión, o contraseña incorrecta'));
 			}
 		}
 		else
@@ -242,7 +242,7 @@ class UsersController extends AppController
 	{
 		if($this->isEditPage() && !$this->User->exists($user_id))
 		{
-			throw new NotFoundException(__('Invalid user'));
+			throw new NotFoundException(__('Acceso inválido'));
 		}
 		
 		$username = '';
@@ -257,13 +257,13 @@ class UsersController extends AppController
 
 			if($this->User->save($this->request->data))
 			{
-				$this->Flash->success(__('ユーザ情報が保存されました'));
+				$this->Flash->success(__('El usuario ha sido guardado'));
 				unset($this->request->data['User']['new_password']);
 				return $this->redirect(['action' => 'index']);
 			}
 			else
 			{
-				$this->Flash->error(__('ユーザ情報が保存できませんでした'));
+				$this->Flash->error(__('No se pudo guardar el usuario. Por favor, intente nuevamente.'));
 			}
 		}
 		else
@@ -294,18 +294,18 @@ class UsersController extends AppController
 		
 		if(!$this->User->exists())
 		{
-			throw new NotFoundException(__('Invalid user'));
+			throw new NotFoundException(__('Usuario inválido'));
 		}
 		
 		$this->request->allowMethod('post', 'delete');
 		
 		if($this->User->delete())
 		{
-			$this->Flash->success(__('ユーザが削除されました'));
+			$this->Flash->success(__('El usuario ha sido eliminado'));
 		}
 		else
 		{
-			$this->Flash->error(__('ユーザを削除できませんでした'));
+			$this->Flash->error(__('No se pudo eliminar el usuario. Por favor, intente nuevamente.'));
 		}
 		
 		return $this->redirect(['action' => 'index']);
@@ -338,13 +338,13 @@ class UsersController extends AppController
 			
 			if($data['new_password'] == '')
 			{
-				$this->Flash->error(__('パスワードを入力して下さい'));
+				$this->Flash->error(__('Por favor, ingrese la contraseña'));
 				return;
 			}
 			
 			if($data['new_password'] != $data['new_password2'])
 			{
-				$this->Flash->error(__('入力された「パスワード」と「パスワード（確認用）」が一致しません'));
+				$this->Flash->error(__('La contraseña y la contraseña de confirmación no coinciden'));
 				return;
 			}
 			
@@ -353,11 +353,11 @@ class UsersController extends AppController
 			
 			if($this->User->save($data))
 			{
-				$this->Flash->success(__('パスワードが変更されました'));
+				$this->Flash->success(__('La contraseña ha sido actualizada'));
 			}
 			else
 			{
-				$this->Flash->error(__('パスワードを保存できませんでした'));
+				$this->Flash->error(__('No se pudo actualizar la contraseña. Por favor, intente nuevamente.'));
 			}
 		}
 		else
@@ -428,7 +428,7 @@ class UsersController extends AppController
 			// インポートファイルが指定されていない場合、エラーメッセージを表示
 			if($csvfile['error'] != 0)
 			{
-				$this->Flash->error(__('インポートファイルが指定されていません'));
+				$this->Flash->error(__('El archivo de importación no se ha especificado'));
 				$this->set(compact('err_msg'));
 				return;
 			}
@@ -562,19 +562,19 @@ class UsersController extends AppController
 				if($is_error)
 				{
 					$ds->rollback();
-					$this->Flash->error(__('インポートに失敗しました'));
+					$this->Flash->error(__('La importación falló'));
 				}
 				else
 				{
 					$ds->commit();
-					$this->Flash->success(__('インポートが完了しました'));
+					$this->Flash->success(__('La importación ha sido completada'));
 					return $this->redirect(['action' => 'index']);
 				}
 			}
 			catch(Exception $e)
 			{
 				$ds->rollback();
-				$this->Flash->error(__('インポートに失敗しました'));
+				$this->Flash->error(__('La importación falló'));
 			}
 		}
 		
@@ -604,22 +604,22 @@ class UsersController extends AppController
 		//	ヘッダー行の作成			//
 		//------------------------------//
 		$header = [
-			__('ログインID'),
-			__('パスワード'),
-			__('氏名'),
-			__('権限'),
-			__('メールアドレス'),
-			__('備考'),
+			__('ID de inicio de sesión'),
+			__('Contraseña'),
+			__('Nombre'),
+			__('Permisos'),
+			__('Correo electrónico'),
+			__('Comentario'),
 		];
 		
 		for($n=0; $n < $group_count; $n++)
 		{
-			$header[] = __('グループ').($n+1);
+			$header[] = __('Grupo').($n+1);
 		}
 		
 		for($n=0; $n < $course_count; $n++)
 		{
-			$header[] = __('コース').($n+1);
+			$header[] = __('Curso').($n+1);
 		}
 		
 		// ヘッダー行をCSV出力

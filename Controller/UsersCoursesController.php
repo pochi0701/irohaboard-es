@@ -33,7 +33,7 @@ class UsersCoursesController extends AppController
 		// お知らせ一覧を取得
 		$infos = $this->fetchTable('Info')->getInfos($user_id, 2);
 		
-		$no_info = '';
+		$no_info = __('No hay noticias disponibles');
 		
 		// 全体のお知らせもお知らせも存在しない場合
 		if(($info == '') && (count($infos) == 0))
@@ -42,7 +42,7 @@ class UsersCoursesController extends AppController
 		// 受講コース情報の取得
 		$courses = $this->UsersCourse->getCourseRecord($user_id);
 		
-		$no_record = '';
+		$no_record = __('No hay cursos disponibles para tomar');
 		
 		if(count($courses) == 0)
 			$no_record = __('受講可能なコースはありません');

@@ -4,13 +4,13 @@ $is_admin_record = $this->isAdminPage() && $this->isRecordPage();
 ?>
 <style>
 @media only screen and (max-width:800px)
-{	.responsive-table tbody td:nth-of-type(2):before { width: 100px; display: inline-block; content: "<?= __('種別').' : '?>";}
-	.responsive-table tbody td:nth-of-type(3):before { content: "<?= __('学習開始日').' : '?>"; }
-	.responsive-table tbody td:nth-of-type(4):before { content: "<?= __('前回学習日').' : '?>"; }
-	.responsive-table tbody td:nth-of-type(5):before { content: "<?= __('学習時間').' : '?>"; }
-	.responsive-table tbody td:nth-of-type(6):before { content: "<?= __('学習回数').' : '?>"; }
-	.responsive-table tbody td:nth-of-type(7):before { content: "<?= __('理解度').' : '?>"; }
-	.responsive-table tbody td:nth-of-type(8):before { content: "<?= __('完了').' : '?>"; }
+{	.responsive-table tbody td:nth-of-type(2):before { width: 100px; display: inline-block; content: "<?= __('Tipo').' : '?>";}
+	.responsive-table tbody td:nth-of-type(3):before { content: "<?= __('Fecha de inicio').' : '?>"; }
+	.responsive-table tbody td:nth-of-type(4):before { content: "<?= __('Última fecha').' : '?>"; }
+	.responsive-table tbody td:nth-of-type(5):before { content: "<?= __('Tiempo de estudio').' : '?>"; }
+	.responsive-table tbody td:nth-of-type(6):before { content: "<?= __('Número de veces').' : '?>"; }
+	.responsive-table tbody td:nth-of-type(7):before { content: "<?= __('Comprensión').' : '?>"; }
+	.responsive-table tbody td:nth-of-type(8):before { content: "<?= __('Completado').' : '?>"; }
 }
 
 <?php if($is_admin_record) { // 管理者による学習履歴表示の場合、メニューを表示しない ?>
@@ -33,7 +33,7 @@ $is_admin_record = $this->isAdminPage() && $this->isRecordPage();
 	if(!$is_admin_record)
 	{
 		$this->Html->addCrumb(
-			'<span class="glyphicon glyphicon-book" aria-hidden="true"></span> コース一覧',
+			'<span class="glyphicon glyphicon-book" aria-hidden="true"></span> Lista de cursos',
 			['controller' => 'users_courses','action' => 'index'],
 			['escape' => false]
 		);
@@ -57,14 +57,14 @@ $is_admin_record = $this->isAdminPage() && $this->isRecordPage();
 	<table class="responsive-table">
 		<thead>
 			<tr>
-				<th><?= __('コンテンツ名'); ?></th>
-				<th class="ib-col-center"><?= __('種別'); ?></th>
-				<th class="ib-col-date"><?= __('学習開始日'); ?></th>
-				<th class="ib-col-date"><?= __('前回学習日'); ?></th>
-				<th nowrap class="ib-col-center"><?= __('学習時間'); ?></th>
-				<th nowrap class="ib-col-center"><?= __('学習回数'); ?></th>
-				<th nowrap class="ib-col-center"><?= __('理解度'); ?></th>
-				<th nowrap class="ib-col-center"><?= __('完了'); ?></th>
+				<th><?= __('Nombre del contenido'); ?></th>
+				<th class="ib-col-center"><?= __('Tipo'); ?></th>
+				<th class="ib-col-date"><?= __('Fecha de inicio'); ?></th>
+				<th class="ib-col-date"><?= __('Última fecha'); ?></th>
+				<th nowrap class="ib-col-center"><?= __('Tiempo de estudio'); ?></th>
+				<th nowrap class="ib-col-center"><?= __('Número de veces'); ?></th>
+				<th nowrap class="ib-col-center"><?= __('Comprensión'); ?></th>
+				<th nowrap class="ib-col-center"><?= __('Completado'); ?></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -109,7 +109,7 @@ $is_admin_record = $this->isAdminPage() && $this->isRecordPage();
 				// アンケート結果が存在する場合、アンケート結果へのリンクを出力
 				if ($content['Record']['record_id'] != null)
 				{
-					$result = '回答';
+					$result = 'Responder';
 					
 					$understanding = $this->Html->link(
 						$result, [
@@ -153,7 +153,7 @@ $is_admin_record = $this->isAdminPage() && $this->isRecordPage();
 					'action' => 'view',
 					$content['Content']['id']
 				]);
-				$kind  =  __('学習'); // 一律学習と表記
+				$kind  =  __('Estudio'); // 一律学習と表記
 				$understanding = h(Configure::read('record_understanding.'.$content[0]['understanding']));
 				break;
 		}
@@ -163,7 +163,7 @@ $is_admin_record = $this->isAdminPage() && $this->isRecordPage();
 			$title_link = h($content['Content']['title']);
 		
 		if($content['Content']['status'] == 0)
-			$title_link .= ' <span class="status-closed">(非公開)</span>';
+			$title_link .= ' <span class="status-closed">(No publicado)</span>';
 		
 		//debug($content);
 		?>

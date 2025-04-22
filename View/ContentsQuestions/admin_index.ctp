@@ -49,31 +49,31 @@
 <div class="admin-contents-questions-index">
 	<div class="ib-breadcrumb">
 	<?php 
-		$this->Html->addCrumb(__('コース一覧'), ['controller' => 'courses', 'action' => 'index']);
+		$this->Html->addCrumb(__('Lista de cursos'), ['controller' => 'courses', 'action' => 'index']);
 		$this->Html->addCrumb($content['Course']['title'], ['controller' => 'contents', 'action' => 'index', $content['Course']['id']]);
 		$this->Html->addCrumb(h($content['Content']['title']));
 		
 		echo $this->Html->getCrumbs(' / ');
 	?>
 	</div>
-	<div class="ib-page-title"><?= __('テスト問題一覧'); ?></div>
+	<div class="ib-page-title"><?= __('Lista de preguntas del examen'); ?></div>
 	
 	<div class="buttons_container">
-		<button type="button" class="btn btn-primary btn-add" onclick="location.href='<?= Router::url(['action' => 'add', $content['Content']['id']]) ?>'">+ 追加</button>
+		<button type="button" class="btn btn-primary btn-add" onclick="location.href='<?= Router::url(['action' => 'add', $content['Content']['id']]) ?>'">+ Agregar</button>
 	</div>
 	
-	<div class="alert alert-warning"><?= __('ドラッグアンドドロップで出題順が変更できます。'); ?></div>
+	<div class="alert alert-warning"><?= __('Puede cambiar el orden de las preguntas arrastrando y soltando.'); ?></div>
 	<table id='sortable-table' cellpadding="0" cellspacing="0">
 	<thead>
 	<tr>
-		<th><?= __('タイトル'); ?></th>
-		<th><?= __('問題文'); ?></th>
-		<th><?= __('選択肢'); ?></th>
-		<th width="40" nowap><?= __('正解'); ?></th>
-		<th width="40" nowap><?= __('得点'); ?></th>
-		<th class="ib-col-date"><?= __('作成日時'); ?></th>
-		<th class="ib-col-date"><?= __('更新日時'); ?></th>
-		<th class="actions text-center"><?= __('Actions'); ?></th>
+		<th><?= __('Título'); ?></th>
+		<th><?= __('Pregunta'); ?></th>
+		<th><?= __('Opciones'); ?></th>
+		<th width="40" nowap><?= __('Correcta'); ?></th>
+		<th width="40" nowap><?= __('Puntos'); ?></th>
+		<th class="ib-col-date"><?= __('Fecha de creación'); ?></th>
+		<th class="ib-col-date"><?= __('Fecha de actualización'); ?></th>
+		<th class="actions text-center"><?= __('Acciones'); ?></th>
 	</tr>
 	</thead>
 	<tbody>
@@ -87,10 +87,10 @@
 		<td class="ib-col-date"><?= Utils::getYMDHN($contentsQuestion['ContentsQuestion']['created']); ?>&nbsp;</td>
 		<td class="ib-col-date"><?= Utils::getYMDHN($contentsQuestion['ContentsQuestion']['modified']); ?>&nbsp;</td>
 		<td class="actions text-center">
-			<button type="button" class="btn btn-success" onclick="location.href='<?= Router::url(['action' => 'edit', $contentsQuestion['Content']['id'], $contentsQuestion['ContentsQuestion']['id']]) ?>'">編集</button>
+			<button type="button" class="btn btn-success" onclick="location.href='<?= Router::url(['action' => 'edit', $contentsQuestion['Content']['id'], $contentsQuestion['ContentsQuestion']['id']]) ?>'">Editar</button>
 			<?php if($loginedUser['role'] == 'admin') {?>
-			<?= $this->Form->postLink(__('削除'), ['action' => 'delete', $contentsQuestion['ContentsQuestion']['id']], ['class'=>'btn btn-danger'], 
-					__('[%s] を削除してもよろしいですか?', $contentsQuestion['ContentsQuestion']['title'])); ?>
+			<?= $this->Form->postLink(__('Eliminar'), ['action' => 'delete', $contentsQuestion['ContentsQuestion']['id']], ['class'=>'btn btn-danger'], 
+					__('¿Está seguro de que desea eliminar [%s]?', $contentsQuestion['ContentsQuestion']['title'])); ?>
 			<?php }?>
 			<?= $this->Form->hidden('id', ['id'=>'', 'class'=>'target_id', 'value'=>$contentsQuestion['ContentsQuestion']['id']]);?>
 		</td>

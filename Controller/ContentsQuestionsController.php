@@ -53,7 +53,7 @@ class ContentsQuestionsController extends AppController
 		if(!$this->isAdminPage())
 		{
 			if(!$this->fetchTable('Course')->hasRight($this->readAuthUser('id'), $content['Content']['course_id']))
-				throw new NotFoundException(__('Invalid access'));
+				throw new NotFoundException(__('Acceso inválido'));
 		}
 		
 		//------------------------------//
@@ -70,7 +70,7 @@ class ContentsQuestionsController extends AppController
 			// 受講者によるテスト結果表示の場合、自身のテスト結果か確認
 			if(!$this->isAdminPage() && $this->isRecordPage() && ($record['Record']['user_id'] != $this->readAuthUser('id')))
 			{
-				throw new NotFoundException(__('Invalid access'));
+				throw new NotFoundException(__('Acceso inválido'));
 			}
 			
 			// テスト結果に紐づく問題ID一覧（出題順）を作成
@@ -307,7 +307,7 @@ class ContentsQuestionsController extends AppController
 		
 		if($this->isEditPage() && !$this->ContentsQuestion->exists($question_id))
 		{
-			throw new NotFoundException(__('Invalid contents question'));
+			throw new NotFoundException(__('Pregunta de contenido inválida'));
 		}
 
 		// コンテンツ情報を取得
@@ -327,7 +327,7 @@ class ContentsQuestionsController extends AppController
 			
 			if($this->ContentsQuestion->save($this->request->data))
 			{
-				$this->Flash->success(__('問題が保存されました'));
+				$this->Flash->success(__('La pregunta ha sido guardada'));
 				return $this->redirect([
 					'controller' => 'contents_questions',
 					'action' => 'index',
@@ -336,7 +336,7 @@ class ContentsQuestionsController extends AppController
 			}
 			else
 			{
-				$this->Flash->error(__('The contents question could not be saved. Please, try again.'));
+				$this->Flash->error(__('No se pudo guardar la pregunta de contenido. Por favor, intente nuevamente.'));
 			}
 		}
 		else
@@ -357,7 +357,7 @@ class ContentsQuestionsController extends AppController
 		
 		if(!$this->ContentsQuestion->exists())
 		{
-			throw new NotFoundException(__('Invalid contents question'));
+			throw new NotFoundException(__('Pregunta de contenido inválida'));
 		}
 		
 		$this->request->allowMethod('post', 'delete');
@@ -367,7 +367,7 @@ class ContentsQuestionsController extends AppController
 		
 		if($this->ContentsQuestion->delete())
 		{
-			$this->Flash->success(__('問題が削除されました'));
+			$this->Flash->success(__('La pregunta ha sido eliminada'));
 			return $this->redirect([
 				'controller' => 'contents_questions',
 				'action' => 'index',
@@ -376,7 +376,7 @@ class ContentsQuestionsController extends AppController
 		}
 		else
 		{
-			$this->Flash->error(__('The contents question could not be deleted. Please, try again.'));
+			$this->Flash->error(__('No se pudo eliminar la pregunta de contenido. Por favor, intente nuevamente.'));
 		}
 		return $this->redirect(['action' => 'index']);
 	}

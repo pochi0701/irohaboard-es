@@ -55,7 +55,7 @@ class ContentsController extends AppController
 			// コースの閲覧権限の確認
 			if(!$this->fetchTable('Course')->hasRight($this->readAuthUser('id'), $course_id))
 			{
-				throw new NotFoundException(__('Invalid access'));
+				throw new NotFoundException(__('Acceso inválido'));
 			}
 			
 			$contents = $this->Content->getContentRecord($this->readAuthUser('id'), $course_id, $role);
@@ -77,7 +77,7 @@ class ContentsController extends AppController
 		
 		if(!$this->Content->exists($content_id))
 		{
-			throw new NotFoundException(__('Invalid content'));
+			throw new NotFoundException(__('Contenido inválido'));
 		}
 
 		// ヘッダー、フッターを非表示
@@ -88,7 +88,7 @@ class ContentsController extends AppController
 		// コンテンツの閲覧権限の確認
 		if(!$this->fetchTable('Course')->hasRight($this->readAuthUser('id'), $content['Content']['course_id']))
 		{
-			throw new NotFoundException(__('Invalid access'));
+			throw new NotFoundException(__('Acceso inválido'));
 		}
 		
 		$this->set(compact('content'));
@@ -142,7 +142,7 @@ class ContentsController extends AppController
 		
 		if($this->isEditPage() && !$this->Content->exists($content_id))
 		{
-			throw new NotFoundException(__('Invalid content'));
+			throw new NotFoundException(__('Contenido inválido'));
 		}
 		
 		if($this->request->is(['post', 'put']))
@@ -160,12 +160,12 @@ class ContentsController extends AppController
 			
 			if($this->Content->save($this->request->data))
 			{
-				$this->Flash->success(__('コンテンツが保存されました'));
+				$this->Flash->success(__('El contenido ha sido guardado'));
 				return $this->redirect(['action' => 'index', $course_id]);
 			}
 			else
 			{
-				$this->Flash->error(__('The content could not be saved. Please, try again.'));
+				$this->Flash->error(__('No se pudo guardar el contenido. Por favor, intente nuevamente.'));
 			}
 		}
 		else
@@ -194,7 +194,7 @@ class ContentsController extends AppController
 		
 		if(!$this->Content->exists())
 		{
-			throw new NotFoundException(__('Invalid content'));
+			throw new NotFoundException(__('Contenido inválido'));
 		}
 		
 		// コンテンツ情報を取得
@@ -207,11 +207,11 @@ class ContentsController extends AppController
 			// コンテンツに紐づくテスト問題も削除
 			$this->fetchTable('ContentsQuestion')->deleteAll(['ContentsQuestion.content_id' => $content_id], false);
 			$this->request->allowMethod('post', 'delete');
-			$this->Flash->success(__('コンテンツが削除されました'));
+			$this->Flash->success(__('El contenido ha sido eliminado'));
 		}
 		else
 		{
-			$this->Flash->error(__('The content could not be deleted. Please, try again.'));
+			$this->Flash->error(__('No se pudo eliminar el contenido. Por favor, intente nuevamente.'));
 		}
 		
 		return $this->redirect(['action' => 'index', $content['Course']['id']]);
@@ -286,7 +286,7 @@ class ContentsController extends AppController
 				$upload_maxsize = Configure::read('upload_movie_maxsize');
 				break;
 			default :
-				throw new NotFoundException(__('Invalid access'));
+				throw new NotFoundException(__('Acceso inválido'));
 		}
 		
 		// php.ini の upload_max_filesize, post_max_size の値を確認（互換性維持のためメソッドが存在する場合のみ）

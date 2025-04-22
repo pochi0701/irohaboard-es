@@ -10,7 +10,7 @@
 </script>
 <?php $this->end(); ?>
 <div class="admin-users-index">
-	<div class="ib-page-title"><?= __('ユーザ一覧'); ?></div>
+	<div class="ib-page-title"><?= __('Lista de usuarios'); ?></div>
 	<div class="buttons_container">
 		<?php if($loginedUser['role'] == 'admin') { ?>
 		<button type="button" class="btn btn-primary btn-export" onclick="downloadCSV();">エクスポート</button>
@@ -22,31 +22,31 @@
 	<?php
 		echo $this->Form->create('User');
 		echo $this->Form->searchField('group_id', [
-			'label'    => __('グループ'),
+			'label'    => __('Grupo'),
 			'options'  => $groups, 
 			'selected' => $group_id, 
 			'empty'    => '全て', 
 			'onchange' => 'submit(this.form);'
 		]);
-		echo $this->Form->searchField('username',		['label' => __('ログインID')]);
-		echo $this->Form->searchField('name',			['label' => __('氏名')]);
+		echo $this->Form->searchField('username',		['label' => __('ID de inicio de sesión')]);
+		echo $this->Form->searchField('name',			['label' => __('Nombre completo')]);
 		echo $this->Form->hidden('cmd');
-		echo $this->Form->submit(__('検索'),	['class' => 'btn btn-info btn-add']);
+		echo $this->Form->submit(__('Buscar'),	['class' => 'btn btn-info btn-add']);
 		echo $this->Form->end();
 	?>
 	</div>
 	<table>
 	<thead>
 	<tr>
-		<th nowrap><?= $this->Paginator->sort('username', __('ログインID')); ?></th>
-		<th nowrap class="col-width"><?= $this->Paginator->sort('name', __('氏名')); ?></th>
+		<th nowrap><?= $this->Paginator->sort('username', __('ID de inicio de sesión')); ?></th>
+		<th nowrap class="col-width"><?= $this->Paginator->sort('name', __('Nombre completo')); ?></th>
 		<th nowrap><?= $this->Paginator->sort('role', '権限'); ?></th>
-		<th nowrap><?= __('所属グループ'); ?></th>
-		<th nowrap class="ib-col-datetime"><?= __('受講コース'); ?></th>
-		<th class="ib-col-datetime"><?= $this->Paginator->sort('last_logined', __('最終ログイン日時')); ?></th>
-		<th class="ib-col-datetime"><?= $this->Paginator->sort('created', __('作成日時')); ?></th>
+		<th nowrap><?= __('Grupo de pertenencia'); ?></th>
+		<th nowrap class="ib-col-datetime"><?= __('Curso inscrito'); ?></th>
+		<th class="ib-col-datetime"><?= $this->Paginator->sort('last_logined', __('Última fecha y hora de inicio de sesión')); ?></th>
+		<th class="ib-col-datetime"><?= $this->Paginator->sort('created', __('Fecha y hora de creación')); ?></th>
 		<?php if($loginedUser['role'] == 'admin') {?>
-		<th class="ib-col-action"><?= __('Actions'); ?></th>
+		<th class="ib-col-action"><?= __('Acciones'); ?></th>
 		<?php }?>
 	</tr>
 	</thead>
@@ -62,8 +62,8 @@
 		<td class="ib-col-datetime"><?= h(Utils::getYMDHN($user['User']['created'])); ?>&nbsp;</td>
 		<?php if($loginedUser['role'] == 'admin') {?>
 		<td class="ib-col-action">
-			<button type="button" class="btn btn-success" onclick="location.href='<?= Router::url(['action' => 'edit', $user['User']['id']]) ?>'"><?= __('編集')?></button>
-			<?= $this->Form->postLink(__('削除'), ['action' => 'delete', $user['User']['id']], ['class' => 'btn btn-danger'],__('[%s] を削除してもよろしいですか?', $user['User']['name']));?>
+			<button type="button" class="btn btn-info" onclick="location.href='<?= Router::url(['action' => 'edit', $user['User']['id']]) ?>'"><?= __('Editar')?></button>
+			<?= $this->Form->postLink(__('Eliminar'), ['action' => 'delete', $user['User']['id']], ['class' => 'btn btn-danger'],__('[%s] を削除してもよろしいですか?', $user['User']['name']));?>
 		</td>
 		<?php }?>
 	</tr>

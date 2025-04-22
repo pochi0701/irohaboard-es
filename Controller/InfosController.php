@@ -46,13 +46,13 @@ class InfosController extends AppController
 	{
 		if(!$this->Info->exists($info_id))
 		{
-			throw new NotFoundException(__('Invalid info'));
+			throw new NotFoundException(__('Información inválida'));
 		}
 		
 		// お知らせの閲覧権限の確認
 		if(!$this->Info->hasRight($this->readAuthUser('id'), $info_id))
 		{
-			throw new NotFoundException(__('Invalid access'));
+			throw new NotFoundException(__('Acceso inválido'));
 		}
 		
 		$info = $this->Info->get($info_id);
@@ -100,7 +100,7 @@ class InfosController extends AppController
 	{
 		if($this->isEditPage() && !$this->Info->exists($info_id))
 		{
-			throw new NotFoundException(__('Invalid info'));
+			throw new NotFoundException(__('Información inválida'));
 		}
 		
 		if($this->request->is(['post', 'put']))
@@ -113,12 +113,12 @@ class InfosController extends AppController
 			
 			if($this->Info->save($this->request->data))
 			{
-				$this->Flash->success(__('お知らせが保存されました'));
+				$this->Flash->success(__('La información ha sido guardada'));
 				return $this->redirect(['action' => 'index']);
 			}
 			else
 			{
-				$this->Flash->error(__('The info could not be saved. Please, try again.'));
+				$this->Flash->error(__('No se pudo guardar la información. Por favor, intente nuevamente.'));
 			}
 		}
 		else
@@ -140,18 +140,18 @@ class InfosController extends AppController
 		
 		if(!$this->Info->exists())
 		{
-			throw new NotFoundException(__('Invalid info'));
+			throw new NotFoundException(__('Información inválida'));
 		}
 		
 		$this->request->allowMethod('post', 'delete');
 		
 		if($this->Info->delete())
 		{
-			$this->Flash->success(__('お知らせが削除されました'));
+			$this->Flash->success(__('La información ha sido eliminada'));
 		}
 		else
 		{
-			$this->Flash->error(__('The info could not be deleted. Please, try again.'));
+			$this->Flash->error(__('No se pudo eliminar la información. Por favor, intente nuevamente.'));
 		}
 		
 		return $this->redirect(['action' => 'index']);

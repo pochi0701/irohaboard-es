@@ -1,6 +1,6 @@
 <div class="users-courses-index">
 	<div class="panel panel-success">
-		<div class="panel-heading"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> <?= __('お知らせ'); ?></div>
+		<div class="panel-heading"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> <?= __('Aviso'); ?></div>
 		<div class="panel-body">
 			<?php if($info != ''){?>
 			<div class="well">
@@ -24,25 +24,25 @@
 			<?php endforeach; ?>
 			</tbody>
 			</table>
-			<div class="text-right"><?= $this->Html->link(__('一覧を表示'), ['controller' => 'infos', 'action' => 'index']); ?></div>
+			<div class="text-right"><?= $this->Html->link(__('Ver lista'), ['controller' => 'infos', 'action' => 'index']); ?></div>
 			<?php }?>
 			<?= $no_info;?>
 		</div>
 	</div>
 	<div class="panel panel-info">
-	<div class="panel-heading"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> <?= __('コース一覧')?></div>
+	<div class="panel-heading"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> <?= __('Lista de cursos')?></div>
 	<div class="panel-body">
 		<ul class="list-group">
 		<?php foreach ($courses as $course): ?>
 		<?php //debug($course)?>
 			<a href="<?= Router::url(['controller' => 'contents', 'action' => 'index', $course['Course']['id']]);?>" class="list-group-item">
 				<?php if($course[0]['left_cnt'] != 0){?>
-				<button type="button" class="btn btn-danger btn-rest"><?= __('残り')?> <span class="badge"><?= h($course[0]['left_cnt']); ?></span></button>
+				<button type="button" class="btn btn-danger btn-rest"><?= __('Restante')?> <span class="badge"><?= h($course[0]['left_cnt']); ?></span></button>
 				<?php }?>
 				<h4 class="list-group-item-heading"><?= h($course['Course']['title']);?></h4>
 				<p class="list-group-item-text">
-					<span class="first-date"><?= __('学習開始日').': '.Utils::getYMD($course['Record']['first_date']); ?></span>
-					<span class="last-date"><?= __('前回学習日').': '.Utils::getYMD($course['Record']['last_date']); ?></span>
+					<span class="first-date"><?= __('Fecha de inicio de estudio').': '.Utils::getYMD($course['Record']['first_date']); ?></span>
+					<span class="last-date"><?= __('Última fecha de estudio').': '.Utils::getYMD($course['Record']['last_date']); ?></span>
 				</p>
 			</a>
 		<?php endforeach; ?>

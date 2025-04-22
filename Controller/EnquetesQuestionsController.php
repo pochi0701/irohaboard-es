@@ -52,7 +52,7 @@ class EnquetesQuestionsController extends AppController
 		if(!$this->isAdminPage())
 		{
 			if(!$this->fetchTable('Course')->hasRight($this->readAuthUser('id'), $content['Content']['course_id']))
-				throw new NotFoundException(__('Invalid access'));
+				throw new NotFoundException(__('Acceso inválido'));
 		}
 		
 		//------------------------------//
@@ -68,7 +68,7 @@ class EnquetesQuestionsController extends AppController
 			// 受講者によるテスト結果表示の場合、自身のテスト結果か確認
 			if(!$this->isAdminPage() && $this->isRecordPage() && ($record['Record']['user_id'] != $this->readAuthUser('id')))
 			{
-				throw new NotFoundException(__('Invalid access'));
+				throw new NotFoundException(__('Acceso inválido'));
 			}
 			
 			// テスト結果に紐づく問題ID一覧（出題順）を作成
@@ -153,7 +153,7 @@ class EnquetesQuestionsController extends AppController
 				// ランダム出題用の問題IDリストを削除
 				$this->deleteSession('Iroha.RondomQuestions.'.$content_id.'.id_list');
 				
-				$this->Flash->success(__('回答内容を送信しました'));
+				$this->Flash->success(__('La pregunta ha sido guardada'));
 				
 				$this->redirect([
 					'action' => 'record',
@@ -234,7 +234,7 @@ class EnquetesQuestionsController extends AppController
 		
 		if($this->isEditPage() && !$this->fetchTable('ContentsQuestion')->exists($question_id))
 		{
-			throw new NotFoundException(__('Invalid contents question'));
+			throw new NotFoundException(__('Pregunta de encuesta inválida'));
 		}
 
 		// コンテンツ情報を取得
@@ -254,7 +254,7 @@ class EnquetesQuestionsController extends AppController
 			
 			if($this->fetchTable('ContentsQuestion')->save($this->request->data))
 			{
-				$this->Flash->success(__('質問が保存されました'));
+				$this->Flash->success(__('La pregunta ha sido guardada'));
 				
 				return $this->redirect([
 					'controller' => 'enquetes_questions',
@@ -264,7 +264,7 @@ class EnquetesQuestionsController extends AppController
 			}
 			else
 			{
-				$this->Flash->error(__('The contents question could not be saved. Please, try again.'));
+				$this->Flash->error(__('No se pudo guardar la pregunta de encuesta. Por favor, intente nuevamente.'));
 			}
 		}
 		else
@@ -285,7 +285,7 @@ class EnquetesQuestionsController extends AppController
 		
 		if(!$this->fetchTable('ContentsQuestion')->exists())
 		{
-			throw new NotFoundException(__('Invalid contents question'));
+			throw new NotFoundException(__('Pregunta de encuesta inválida'));
 		}
 		
 		$this->request->allowMethod('post', 'delete');
@@ -295,7 +295,7 @@ class EnquetesQuestionsController extends AppController
 		
 		if($this->fetchTable('ContentsQuestion')->delete())
 		{
-			$this->Flash->success(__('質問が削除されました'));
+			$this->Flash->success(__('La pregunta ha sido eliminada'));
 			
 			return $this->redirect([
 				'controller' => 'enquetes_questions',
@@ -305,7 +305,7 @@ class EnquetesQuestionsController extends AppController
 		}
 		else
 		{
-			$this->Flash->error(__('The contents question could not be deleted. Please, try again.'));
+			$this->Flash->error(__('No se pudo eliminar la pregunta de encuesta. Por favor, intente nuevamente.'));
 		}
 		return $this->redirect(['action' => 'index']);
 	}

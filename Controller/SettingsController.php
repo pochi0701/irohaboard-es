@@ -39,7 +39,7 @@ class SettingsController extends AppController
 				$this->writeSession('Setting.'.$key, $value);
 			}
 			
-			$this->Flash->success(__('設定が保存されました'));
+			$this->Flash->success(__('La configuración ha sido guardada'));
 		}
 		
 		$this->Setting->recursive = 0;

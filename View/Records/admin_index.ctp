@@ -45,32 +45,32 @@
 </script>
 <?php $this->end(); ?>
 <div class="admin-records-index">
-	<div class="ib-page-title"><?= __('学習履歴一覧'); ?></div>
+	<div class="ib-page-title"><?= __('Lista de historial de estudio'); ?></div>
 	<div class="ib-horizontal">
 	<?php
 		echo $this->Form->create('Record');
 		echo '<div class="ib-search-buttons">';
-		echo $this->Form->submit(__('検索'),	['class' => 'btn btn-info', 'div' => false]);
+		echo $this->Form->submit(__('Buscar'),	['class' => 'btn btn-info', 'div' => false]);
 		echo $this->Form->hidden('cmd');
-		echo '<button type="button" class="btn btn-default" onclick="downloadCSV()">'.__('CSV出力').'</button>';
-		echo '<button type="button" class="btn btn-default" onclick="downloadCSVDetail()">'.__('CSV出力(詳細)').'</button>';
+		echo '<button type="button" class="btn btn-default" onclick="downloadCSV()">'.__('Exportar CSV').'</button>';
+		echo '<button type="button" class="btn btn-default" onclick="downloadCSVDetail()">'.__('Exportar CSV (detallado)').'</button>';
 		echo '</div>';
 		
 		echo '<div class="ib-row">';
-		echo $this->Form->searchField('course_id',			['label' => __('コース'), 'options' => $courses, 'empty' => '全て']);
-		echo $this->Form->searchField('content_category',	['label' => __('コンテンツ種別'), 'options' => Configure::read('content_category'), 'empty' => '全て', 'selected' => $content_category]);
-		echo $this->Form->searchField('content_title',		['label' => __('コンテンツ名')]);
+		echo $this->Form->searchField('course_id',			['label' => __('Curso'), 'options' => $courses, 'empty' => '全て']);
+		echo $this->Form->searchField('content_category',	['label' => __('Tipo de contenido'), 'options' => Configure::read('content_category'), 'empty' => '全て', 'selected' => $content_category]);
+		echo $this->Form->searchField('content_title',		['label' => __('Nombre del contenido')]);
 		echo '</div>';
 		
 		echo '<div class="ib-row">';
-		echo $this->Form->searchField('group_id',	['label' => __('グループ'), 'options' => $groups, 'empty' => '全て', 'selected' => $group_id]);
-		echo $this->Form->searchField('username',	['label' => __('ログインID')]);
-		echo $this->Form->searchField('name',		['label' => __('氏名')]);
+		echo $this->Form->searchField('group_id',	['label' => __('Grupo'), 'options' => $groups, 'empty' => '全て', 'selected' => $group_id]);
+		echo $this->Form->searchField('username',	['label' => __('ID de inicio de sesión')]);
+		echo $this->Form->searchField('name',		['label' => __('Nombre completo')]);
 		echo '</div>';
 		
 		echo '<div class="ib-search-date-container">';
-		echo $this->Form->searchDate('from_date', ['label'=> __('対象日時'), 'value' => $from_date]);
-		echo $this->Form->searchDate('to_date',   ['label'=> __('～'), 'value' => $to_date]);
+		echo $this->Form->searchDate('from_date', ['label'=> __('Fecha y hora objetivo'), 'value' => $from_date]);
+		echo $this->Form->searchDate('to_date',   ['label'=> __('a'), 'value' => $to_date]);
 		echo '</div>';
 		echo $this->Form->end();
 	?>
@@ -78,16 +78,16 @@
 	<table cellpadding="0" cellspacing="0">
 	<thead>
 	<tr>
-		<th nowrap><?= $this->Paginator->sort('User.username', __('ログインID')); ?></th>
-		<th nowrap><?= $this->Paginator->sort('User.name', __('氏名')); ?></th>
-		<th nowrap><?= $this->Paginator->sort('course_id', __('コース')); ?></th>
-		<th nowrap><?= $this->Paginator->sort('content_id', __('コンテンツ')); ?></th>
-		<th nowrap class="ib-col-center"><?= $this->Paginator->sort('score', __('得点')); ?></th>
-		<th class="ib-col-center" nowrap><?= $this->Paginator->sort('pass_score', __('合格点')); ?></th>
-		<th nowrap class="ib-col-center"><?= $this->Paginator->sort('is_passed', __('結果')); ?></th>
-		<th class="ib-col-center" nowrap><?= $this->Paginator->sort('understanding', __('理解度')); ?></th>
-		<th class="ib-col-center"><?= $this->Paginator->sort('study_sec', __('学習時間')); ?></th>
-		<th class="ib-col-datetime"><?= $this->Paginator->sort('created', __('学習日時')); ?></th>
+		<th nowrap><?= $this->Paginator->sort('User.username', __('ID de inicio de sesión')); ?></th>
+		<th nowrap><?= $this->Paginator->sort('User.name', __('Nombre completo')); ?></th>
+		<th nowrap><?= $this->Paginator->sort('course_id', __('Curso')); ?></th>
+		<th nowrap><?= $this->Paginator->sort('content_id', __('Contenido')); ?></th>
+		<th nowrap class="ib-col-center"><?= $this->Paginator->sort('score', __('Puntuación')); ?></th>
+		<th class="ib-col-center" nowrap><?= $this->Paginator->sort('pass_score', __('Puntuación de aprobación')); ?></th>
+		<th nowrap class="ib-col-center"><?= $this->Paginator->sort('is_passed', __('Resultado')); ?></th>
+		<th class="ib-col-center" nowrap><?= $this->Paginator->sort('understanding', __('Nivel de comprensión')); ?></th>
+		<th class="ib-col-center"><?= $this->Paginator->sort('study_sec', __('Tiempo de estudio')); ?></th>
+		<th class="ib-col-datetime"><?= $this->Paginator->sort('created', __('Fecha y hora de estudio')); ?></th>
 	</tr>
 	</thead>
 	<tbody>

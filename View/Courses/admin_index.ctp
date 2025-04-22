@@ -46,19 +46,19 @@
 </script>
 <?php $this->end(); ?>
 <div class="admin-courses-index">
-	<div class="ib-page-title"><?= __('コース一覧'); ?></div>
+	<div class="ib-page-title"><?= __('Lista de cursos'); ?></div>
 	<div class="buttons_container">
-		<button type="button" class="btn btn-primary btn-add" onclick="location.href='<?= Router::url(['action' => 'add']) ?>'">+ 追加</button>
+		<button type="button" class="btn btn-primary btn-add" onclick="location.href='<?= Router::url(['action' => 'add']) ?>'">+ Agregar</button>
 	</div>
 
-	<div class="alert alert-warning"><?= __('ドラッグアンドドロップでコースの並び順が変更できます。'); ?></div>
+	<div class="alert alert-warning"><?= __('Puede cambiar el orden de los cursos arrastrando y soltando.'); ?></div>
 	<table id='sortable-table'>
 	<thead>
 	<tr>
-		<th><?= __('コース名'); ?></th>
-		<th class="ib-col-datetime"><?= __('作成日時'); ?></th>
-		<th class="ib-col-datetime"><?= __('更新日時'); ?></th>
-		<th class="ib-col-action"><?= __('Actions'); ?></th>
+		<th><?= __('Nombre del curso'); ?></th>
+		<th class="ib-col-datetime"><?= __('Fecha de creación'); ?></th>
+		<th class="ib-col-datetime"><?= __('Fecha de actualización'); ?></th>
+		<th class="ib-col-action"><?= __('Acciones'); ?></th>
 	</tr>
 	</thead>
 	<tbody>
@@ -73,10 +73,10 @@
 		<td class="ib-col-date"><?= h(Utils::getYMDHN($course['Course']['created'])); ?>&nbsp;</td>
 		<td class="ib-col-date"><?= h(Utils::getYMDHN($course['Course']['modified'])); ?>&nbsp;</td>
 		<td class="ib-col-action">
-			<button type="button" class="btn btn-success" onclick="location.href='<?= Router::url(['action' => 'edit', $course['Course']['id']]) ?>'"><?= __('編集')?></button>
+			<button type="button" class="btn btn-success" onclick="location.href='<?= Router::url(['action' => 'edit', $course['Course']['id']]) ?>'"><?= __('Editar')?></button>
 			<?php if($loginedUser['role'] == 'admin') {?>
-			<?= $this->Form->postLink(__('削除'), ['action' => 'delete', $course['Course']['id']], ['class'=>'btn btn-danger'], 
-				__('[%s] を削除してもよろしいですか?', $course['Course']['title']));?>
+			<?= $this->Form->postLink(__('Eliminar'), ['action' => 'delete', $course['Course']['id']], ['class'=>'btn btn-danger'], 
+				__('¿Está seguro de que desea eliminar [%s]?', $course['Course']['title']));?>
 			<?php }?>
 		</td>
 	</tr>

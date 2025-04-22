@@ -153,14 +153,14 @@
 	?>
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<?= $this->isEditPage() ? __('編集') :  __('新規コンテンツ'); ?>
+			<?= $this->isEditPage() ? __('Editar') :  __('Nuevo contenido'); ?>
 		</div>
 		<div class="panel-body">
 		<?php
 			echo $this->Form->create('Content', Configure::read('form_defaults'));
 			echo $this->Form->input('id');
-			echo $this->Form->input('title', ['label' => __('コンテンツ名')]);
-			echo $this->Form->inputRadio('kind', ['label' => __('コンテンツ種別'), 'separator'=>"<br>", 'options' => Configure::read('content_kind_comment')]);
+			echo $this->Form->input('title', ['label' => __('Título')]);
+			echo $this->Form->inputRadio('kind', ['label' => __('Tipo de contenido'), 'separator'=>"<br>", 'options' => Configure::read('content_kind_comment')]);
 
 			// URL
 			echo '<div class="kind kind-movie kind-url kind-file">';
@@ -169,49 +169,49 @@
 			
 			// 配布資料
 			echo '<div class="kind kind-file">';
-			echo $this->Form->input('file_name', ['label' => __('ファイル名'), 'class' => 'form-control-filename', 'readonly' => 'readonly']);
+			echo $this->Form->input('file_name', ['label' => __('Nombre del archivo'), 'class' => 'form-control-filename', 'readonly' => 'readonly']);
 			echo '</div>';
 
 			// リッチテキスト
 			echo '<div class="kind kind-text kind-html">';
-			echo $this->Form->input('body',		['label' => __('内容')]);
+			echo $this->Form->input('body',		['label' => __('Contenido')]);
 			echo '</div>';
 
 			// テスト用設定 start
 			echo '<span class="kind kind-test">';
-			echo $this->Form->inputExp('timelimit', ['label' => __('制限時間 (1-100分)')], __('指定した場合、制限時間を過ぎると自動的に採点されます。'));
-			echo $this->Form->inputExp('pass_rate', ['label' => __('合格とする得点率 (1-100%)')], __('指定した場合、合否の判定が行われ、指定しない場合は無条件に合格となります。'));
+			echo $this->Form->inputExp('timelimit', ['label' => __('Tiempo límite (1-100 minutos)')], __('Si se especifica, se calificará automáticamente después de que se haya agotado el tiempo.'));
+			echo $this->Form->inputExp('pass_rate', ['label' => __('Porcentaje de puntuación para aprobar (1-100%)')], __('Si se especifica, se determinará si se aprueba o no, y si no se especifica, se aprueba automáticamente.'));
 			
 			// ランダム出題用
-			echo $this->Form->inputExp('question_count', ['label' => __('出題数 (1-100問)')], __('指定した場合、登録した問題の中からランダムに出題され、指定しない場合は問題一覧画面の並び順で全問出題されます。'));
+			echo $this->Form->inputExp('question_count', ['label' => __('Cantidad de preguntas (1-100)')], __('Si se especifica, se seleccionará aleatoriamente entre las preguntas registradas, y si no se especifica, se presentarán todas las preguntas en el orden de la lista de la pantalla de preguntas.'));
 			
 			// 問題が不正解時の表示
-			echo $this->Form->inputRadio('wrong_mode', ['label' => __('不正解時の表示'), 'options' => Configure::read('wrong_mode'), 'default' => 2],
-				__('テスト結果画面にて不正解の問題の表示方法を指定します。正解時は解説のみが表示されます。'));
+			echo $this->Form->inputRadio('wrong_mode', ['label' => __('Mostrar cuando la respuesta es incorrecta'), 'options' => Configure::read('wrong_mode'), 'default' => 2],
+				__('Especifique cómo se muestra la pregunta incorrecta en la pantalla de resultados del examen. Solo se muestra la explicación correcta cuando la respuesta es correcta.'));
 			
 			echo '</span>';
 			// テスト用設定 end
 
 			// ステータス
-			echo $this->Form->inputRadio('status', ['label' => __('ステータス'), 'options' => Configure::read('content_status'), 'default' => 1],
-				__('[非公開]と設定した場合、管理者権限でログインした場合のみ表示されます。'));
+			echo $this->Form->inputRadio('status', ['label' => __('Estado'), 'options' => Configure::read('content_status'), 'default' => 1],
+				__('[No publicado] Si se establece, solo se mostrará para los usuarios que inicien sesión con permisos de administrador.'));
 
 			// コンテンツ移動用（編集の場合のみ）
 			if($this->isEditPage())
 			{
-				echo $this->Form->inputExp('course_id', ['label' => __('所属コース'), 'value' => $course['Course']['id']],
-					__('変更することで他のコースにコンテンツを移動できます。'));
+				echo $this->Form->inputExp('course_id', ['label' => __('Curso asociado'), 'value' => $course['Course']['id']],
+					__('Cambiarlo permitirá mover el contenido a otro curso.'));
 			}
 
 			// 備考
 			echo '<span class="kind kind-text kind-html kind-movie kind-url kind-file kind-test">';
-			echo $this->Form->input('comment', ['label' => __('備考')]);
+			echo $this->Form->input('comment', ['label' => __('Observaciones')]);
 			echo '</span>';
 			
 			// 保存ボタン
 			echo Configure::read('form_submit_before')
-				.'<button id="btnPreview" class="btn btn-default" onclick="preview(); return false;">プレビュー</button> '
-				.$this->Form->submit(__('保存'), Configure::read('form_submit_defaults'))
+				.'<button id="btnPreview" class="btn btn-default" onclick="preview(); return false;">Vista previa</button> '
+				.$this->Form->submit(__('Guardar'), Configure::read('form_submit_defaults'))
 				.Configure::read('form_submit_after');
 			echo $this->Form->end();
 		?>

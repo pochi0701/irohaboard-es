@@ -16,19 +16,19 @@
 		
 		if(txt.value == '')
 		{
-			alert("選択肢を入力してください");
+			alert("Por favor, ingrese una opción");
 			return false;
 		}
 		
 		if(txt.value.length > 100)
 		{
-			alert("選択肢は100文字以内で入力してください");
+			alert("La opción debe tener un máximo de 100 caracteres");
 			return false;
 		}
 		
 		if(opt.length == 10)
 		{
-			alert("選択肢の数が最大値を超えています");
+			alert("Se ha excedido el número máximo de opciones");
 			return false;
 		}
 		
@@ -107,13 +107,13 @@
 			
 			if($('#ContentsQuestionBody').val() == '')
 			{
-				alert('質問文が入力されていません');
+				alert('No se ha ingresado el texto de la pregunta');
 				return false;
 			}
 			
 			if($("#ContentsQuestionOptions").val() == '')
 			{
-				alert('選択肢が追加されていません');
+				alert('No se han agregado opciones');
 				return false;
 			}
 		});
@@ -163,7 +163,7 @@
 <div class="admin-contents-questions-edit">
 	<div class="ib-breadcrumb">
 	<?php 
-		$this->Html->addCrumb(__('コース一覧'),  ['controller' => 'courses', 'action' => 'index']);
+		$this->Html->addCrumb(__('Lista de cursos'),  ['controller' => 'courses', 'action' => 'index']);
 		$this->Html->addCrumb($content['Course']['title'],  ['controller' => 'contents', 'action' => 'index', $content['Course']['id']]);
 		$this->Html->addCrumb($content['Content']['title'], ['controller' => 'enquetes_questions', 'action' => 'index', $content['Content']['id']]);
 		
@@ -172,38 +172,38 @@
 	</div>
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<?= $this->isEditPage() ? __('編集') :  __('新規質問'); ?>
+			<?= $this->isEditPage() ? __('Editar') :  __('Nueva pregunta'); ?>
 		</div>
 		<div class="panel-body">
 			<?php
 				echo $this->Form->create('ContentsQuestion', Configure::read('form_defaults'));;
 				echo $this->Form->input('id');
-				echo $this->Form->input('title',	['label' => __('タイトル')]);
-				echo $this->Form->input('body',		['label' => __('質問文')]);
-				echo $this->Form->inputRadio('question_type', ['label' => __('回答形式'), 'options' => Configure::read('question_type'), 'default' => 'single', 'onchange' => 'render()']);
+				echo $this->Form->input('title',	['label' => __('Título')]);
+				echo $this->Form->input('body',		['label' => __('Pregunta')]);
+				echo $this->Form->inputRadio('question_type', ['label' => __('Formato de respuesta'), 'options' => Configure::read('question_type'), 'default' => 'single', 'onchange' => 'render()']);
 			?>
 			<div class="form-group row-options required">
-				<label for="ContentsQuestionOptions" class="col col-sm-3 control-label">選択肢／正解</label>
+				<label for="ContentsQuestionOptions" class="col col-sm-3 control-label">Opciones</label>
 				<div class="col col-sm-9 required">
-				「＋」で選択肢の追加、「−」で選択された選択肢を削除します。（※最大10個まで）<br>
+				Use "+" para agregar opciones y "-" para eliminar las opciones seleccionadas. (Máximo 10 opciones)<br>
 				<input type="text" size="20" name="option" style="width: 80%;display:inline-block;">
 				<button class="btn" onclick="add_option();return false;">＋</button>
 				<button class="btn" onclick="del_option();return false;">−</button><br>
 			<?php
-				echo $this->Form->input('option_list',	['label' => __('選択肢／正解'), 
+				echo $this->Form->input('option_list',	['label' => __('Opciones'), 
 					'type' => 'select',
 					'label' => false,
 					'multiple' => true,
 					'size' => 5,
 				]);
-				echo $this->Form->hidden('options',		['label' => __('選択肢')]);
+				echo $this->Form->hidden('options',		['label' => __('Opciones')]);
 			?>
 				</div>
 			</div>
 			<?php
-				echo $this->Form->input('comment',	['label' => __('備考')]);
+				echo $this->Form->input('comment',	['label' => __('Observaciones')]);
 				echo Configure::read('form_submit_before')
-					.$this->Form->submit(__('保存'), Configure::read('form_submit_defaults'))
+					.$this->Form->submit(__('Guardar'), Configure::read('form_submit_defaults'))
 					.Configure::read('form_submit_after');
 				echo $this->Form->end();
 			?>

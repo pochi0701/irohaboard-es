@@ -84,15 +84,15 @@
 		<nav class="ib-navi">
 			<div class="ib-navi-item ib-right ib-navi-logout">
 				<span class="glyphicon glyphicon-log-out"></span>
-				<?= $this->Html->link(__('ログアウト'), ['controller' => 'users', 'action' => 'logout']); ?>
+				<?= $this->Html->link(__('Cerrar sesión'), ['controller' => 'users', 'action' => 'logout']); ?>
 			</div>
 			<div class="ib-navi-sepa ib-right ib-navi-sepa-1"></div>
 			<div class="ib-navi-item ib-right ib-navi-setting">
 				<span class="glyphicon glyphicon-cog"></span>
-				<?= $this->Html->link(__('設定'), ['controller' => 'users', 'action' => 'setting']); ?>
+				<?= $this->Html->link(__('Configuración'), ['controller' => 'users', 'action' => 'setting']); ?>
 			</div>
 			<div class="ib-navi-sepa ib-right ib-navi-sepa-2"></div>
-			<div class="ib-navi-item ib-right ib-navi-welcome"><?= __('ようこそ').' '.h($loginedUser['name']).' '.__('さん'); ?></div>
+			<div class="ib-navi-item ib-right ib-navi-welcome"><?= __('Bienvenido/a').' '.h($loginedUser['name']).' '.__('Sr./Sra.'); ?></div>
 		</nav>
 		<?php }?>
 	</header>

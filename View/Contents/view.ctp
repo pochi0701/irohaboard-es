@@ -61,11 +61,11 @@
 	<div class="content-body content-body-<?= $content['Content']['kind']?>"><?= $body;?></div>
 	<div class="content-foot">
 		<div class="content-menu">
-			<div class="select-message text-success"><?= __('理解度を選択して終了して下さい。');?></div>
+			<div class="select-message text-success"><?= __('Seleccione el nivel de comprensión y finalice.');?></div>
 			<span class='understanding-pc'></span>
 			<span class='understanding-spn'></span>
-			<button type="button" class="btn btn-danger" onclick="finish(0);"><?= __('中断');?></button>
-			<button type="button" class="btn btn-default" onclick="finish(-1);"><?= __('戻る');?></button>
+			<button type="button" class="btn btn-danger" onclick="finish(0);"><?= __('Interrumpir');?></button>
+			<button type="button" class="btn btn-default" onclick="finish(-1);"><?= __('Volver');?></button>
 		</div>
 	</div>
 </div>
