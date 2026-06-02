@@ -9,7 +9,7 @@
  */
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="<?= h(isset($currentHtmlLang) ? $currentHtmlLang : 'es-PY'); ?>">
 <head>
 	<?= $this->Html->charset(); ?>
 	
@@ -38,6 +38,10 @@
 		echo $this->Html->css('custom.css?20200701');
 		
 		// スクリプトの読み込み
+		$jsMessagesJson = json_encode(isset($jsMessages) ? $jsMessages : [], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+		$currentUiLanguageJson = json_encode(isset($currentUiLanguage) ? $currentUiLanguage : 'spa', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+		$currentEditorLangJson = json_encode(isset($currentEditorLang) ? $currentEditorLang : 'en-US', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+		echo '<script>window.IB_LANG = '.$currentUiLanguageJson.'; window.IB_EDITOR_LANG = '.$currentEditorLangJson.'; window.IB_MESSAGES = '.$jsMessagesJson.';</script>';
 		echo $this->Html->script('jquery-1.9.1.min.js');
 		echo $this->Html->script('jquery-ui-1.9.2.min.js');
 		echo $this->Html->script('bootstrap.min.js');
@@ -72,6 +76,26 @@
 			color				: white;
 			text-decoration		: none;
 		}
+
+		.ib-lang-switcher
+		{
+			float: right;
+			padding: 10px 15px 0 0;
+		}
+
+		.ib-lang-switcher a,
+		.ib-lang-switcher span
+		{
+			color: white;
+			margin-left: 8px;
+			text-decoration: none;
+		}
+
+		.ib-lang-switcher .active
+		{
+			font-weight: bold;
+			text-decoration: underline;
+		}
 	</style>
 </head>
 <body>
@@ -79,6 +103,17 @@
 		<div class="ib-logo ib-left">
 			<a href="<?= $this->Html->url('/')?>"><?= h($this->readSession('Setting.title')); ?></a>
 		</div>
+		<?php if(!empty($availableUiLanguages)) {?>
+		<div class="ib-lang-switcher">
+			<?php foreach($availableUiLanguages as $language) {?>
+				<?php if($language['active']) {?>
+					<span class="active"><?= h($language['label']); ?></span>
+				<?php } else {?>
+					<a href="<?= h($language['url']); ?>"><?= h($language['label']); ?></a>
+				<?php }?>
+			<?php }?>
+		</div>
+		<?php }?>
 		<?php if(isset($loginedUser)) {?>
 		<nav class="ib-navi">
 			<div class="ib-navi-item ib-right ib-navi-logout">
@@ -91,7 +126,7 @@
 				<?= $this->Html->link(__('設定'), ['controller' => 'users', 'action' => 'setting']); ?>
 			</div>
 			<div class="ib-navi-sepa ib-right ib-navi-sepa-2"></div>
-			<div class="ib-navi-item ib-right ib-navi-welcome"><?= __('ようこそ').' '.h($loginedUser['name']).' '.__('さん'); ?></div>
+			<div class="ib-navi-item ib-right ib-navi-welcome"><?= sprintf(__('ようこそ %s さん'), h($loginedUser['name'])); ?></div>
 		</nav>
 		<?php }?>
 	</header>

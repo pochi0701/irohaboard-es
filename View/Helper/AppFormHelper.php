@@ -119,7 +119,7 @@ class AppFormHelper extends FormHelper
 	 */
 	protected function example(Array $options)
 	{
-		$text = String::insert('<p class="example">入力例) :text</p>', ['text' => $options['example']]);
+		$text = String::insert('<p class="example">'.__('入力例').' : :text</p>', ['text' => $options['example']]);
 		if (array_key_exists('after', $options)) {
 			// 入力例はinputの直後に表示
 			$options['after'] = $text . $options['after'];

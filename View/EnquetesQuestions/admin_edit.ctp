@@ -2,7 +2,9 @@
 <?= $this->Html->css('summernote.css');?>
 <?php $this->start('script-embedded'); ?>
 <?= $this->Html->script('summernote.min.js');?>
+<?php if(isset($currentEditorLang) && $currentEditorLang === 'ja-JP') {?>
 <?= $this->Html->script('lang/summernote-ja-JP.js');?>
+<?php }?>
 <script>
 	$(document).ready(function()
 	{
@@ -11,24 +13,25 @@
 
 	function add_option()
 	{
+		var messages = window.IB_MESSAGES || {};
 		txt	= document.all("option");
 		opt	= document.all("data[ContentsQuestion][option_list][]").options;
 		
 		if(txt.value == '')
 		{
-			alert("選択肢を入力してください");
+			alert(messages.enterOption || "Please enter an option");
 			return false;
 		}
 		
 		if(txt.value.length > 100)
 		{
-			alert("選択肢は100文字以内で入力してください");
+			alert(messages.optionTooLong || "Please enter an option within 100 characters");
 			return false;
 		}
 		
 		if(opt.length == 10)
 		{
-			alert("選択肢の数が最大値を超えています");
+			alert(messages.tooManyOptions || "The number of options exceeds the maximum");
 			return false;
 		}
 		
@@ -107,13 +110,13 @@
 			
 			if($('#ContentsQuestionBody').val() == '')
 			{
-				alert('質問文が入力されていません');
+				alert((window.IB_MESSAGES || {}).questionRequired || 'The question text has not been entered');
 				return false;
 			}
 			
 			if($("#ContentsQuestionOptions").val() == '')
 			{
-				alert('選択肢が追加されていません');
+				alert((window.IB_MESSAGES || {}).optionsRequired || 'No options have been added');
 				return false;
 			}
 		});
@@ -183,9 +186,9 @@
 				echo $this->Form->inputRadio('question_type', ['label' => __('回答形式'), 'options' => Configure::read('question_type'), 'default' => 'single', 'onchange' => 'render()']);
 			?>
 			<div class="form-group row-options required">
-				<label for="ContentsQuestionOptions" class="col col-sm-3 control-label">選択肢／正解</label>
+				<label for="ContentsQuestionOptions" class="col col-sm-3 control-label"><?= __('選択肢／正解'); ?></label>
 				<div class="col col-sm-9 required">
-				「＋」で選択肢の追加、「−」で選択された選択肢を削除します。（※最大10個まで）<br>
+				<?= __('「＋」で選択肢の追加、「−」で選択された選択肢を削除します。（※最大10個まで）'); ?><br>
 				<input type="text" size="20" name="option" style="width: 80%;display:inline-block;">
 				<button class="btn" onclick="add_option();return false;">＋</button>
 				<button class="btn" onclick="del_option();return false;">−</button><br>

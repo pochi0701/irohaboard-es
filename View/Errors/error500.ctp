@@ -1,7 +1,7 @@
 <div class="ib-page-title"><?= $message; ?></div>
 <p class="error">
-	<strong><?= __d('cake', 'エラー'); ?>: </strong>
-	<?= __d('cake', '内部エラーが発生しました。'); ?>
+	<strong><?= __('エラー'); ?>: </strong>
+	<?= __('内部エラーが発生しました。'); ?>
 </p>
 <?php
 if (Configure::read('debug') > 0):

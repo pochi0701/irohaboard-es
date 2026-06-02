@@ -98,8 +98,6 @@ class Utils
 	 */
 	public static function getCsvData($file_path)
 	{
-		setlocale(LC_ALL, 'ja_JP.UTF-8');
-		
 		$data = file_get_contents($file_path);
 		$data = mb_convert_encoding($data, 'UTF-8', 'SJIS-Win');
 		$temp = tmpfile();
@@ -190,4 +188,3 @@ class Utils
 		return (isset($check)) ? $check : $alternate;
 	}
 }
-

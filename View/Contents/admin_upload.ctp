@@ -66,7 +66,7 @@
 			
 			if($("#ContentFile")[0].files.length == 0)
 			{
-				alert('このブラウザはファイルのドロップをサポートしておりません。');
+				alert('<?= __('This browser does not support file drop'); ?>');
 				return;
 			}
 			
@@ -79,24 +79,24 @@
 <div class="panel panel-default">
 	<div class="panel-body">
 		<div class="form-group">
-			<h4>アップロード可能なファイル形式</h4>
+			<h4><?= __('アップロード可能なファイル形式'); ?></h4>
 			<?= $upload_extensions;?>
 		</div>
 
 		<div class="form-group">
-			<h4>アップロード可能なファイルサイズ</h4>
-			最大 : <?= $this->Number->toReadableSize($upload_maxsize) ;?>バイト
+			<h4><?= __('アップロード可能なファイルサイズ'); ?></h4>
+			<?= __('最大'); ?> : <?= $this->Number->toReadableSize($upload_maxsize) ;?><?= __('バイト'); ?>
 		</div>
 
 		<div class="form-group">
 			<?= $this->Form->create('Content', ['type'=>'file', 'enctype' => 'multipart/form-data']); ?>
 				<div class="drop-container alert alert-warning">
-					<p>ここにファイルをドロップするか、ファイルを選択後、アップロードボタンをクリックしてください。</p>
-					<p>ファイルが複数ある場合には、ZIP形式で圧縮してアップロードを行ってください。</p>
+					<p><?= __('ここにファイルをドロップするか、ファイルを選択後、アップロードボタンをクリックしてください。'); ?></p>
+					<p><?= __('ファイルが複数ある場合には、ZIP形式で圧縮してアップロードを行ってください。'); ?></p>
 					<input type="file" name="data[Content][file]" multiple="multiple" id="ContentFile" class="form-control">
 				</div>
-				<input type="submit" id="btnUpload"  class="btn btn-primary" value="アップロード">　
-				<input type="button"  class="btn"  value=" 閉じる " onclick="parent.closeDialog();">
+				<input type="submit" id="btnUpload"  class="btn btn-primary" value="<?= __('アップロード'); ?>">　
+				<input type="button"  class="btn"  value=" <?= __('Close'); ?> " onclick="parent.closeDialog();">
 			<?= $this->Form->end(); ?>
 		</div>
 	</div>

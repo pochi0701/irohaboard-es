@@ -25,7 +25,7 @@ function setStudySec()
 			
 			if(typeof MSG_TIMELIMIT == 'undefined')
 			{
-				alert("制限時間を過ぎましたので自動採点を行います。");
+				alert(CommonUtil.getMessage('timeLimitAutoSubmit', "Se superó el tiempo límite, por lo que se calificará automáticamente."));
 			}
 			else
 			{

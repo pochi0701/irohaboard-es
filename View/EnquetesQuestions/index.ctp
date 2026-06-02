@@ -152,11 +152,11 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"><?= __('Close'); ?></span></button>
 				<h4 class="modal-title"><?= __('送信確認');?></h4>
 			</div>
 			<div class="modal-body">
-				<p class="answer-incomplete text-danger"><b>※未回答の項目があります。</b></p>
+				<p class="answer-incomplete text-danger"><b><?= __('※未回答の項目があります。'); ?></b></p>
 				<p><?= __('送信してよろしいですか？');?></p>
 			</div>
 			<div class="modal-footer">

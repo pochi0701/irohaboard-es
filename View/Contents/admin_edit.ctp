@@ -4,12 +4,16 @@
 <?php $this->end(); ?>
 <?php $this->start('script-embedded'); ?>
 <?= $this->Html->script('summernote.min.js');?>
+<?php if(isset($currentEditorLang) && $currentEditorLang === 'ja-JP') {?>
 <?= $this->Html->script('lang/summernote-ja-JP.js');?>
+<?php }?>
 <script>
 	$(document).ready(function()
 	{
+		var messages = window.IB_MESSAGES || {};
+
 		// アップロードボタンを追加
-		$('.form-control-upload').after('<input id="btnUpload" type="button" value="ファイルを指定">');
+		$('.form-control-upload').after('<input id="btnUpload" type="button" value="' + (messages.uploadButton || 'Select file') + '">');
 
 		// アップロードボタンクリック時の処理
 		$("#btnUpload").click(function() {
@@ -217,7 +221,7 @@
 			
 			// 保存ボタン
 			echo Configure::read('form_submit_before')
-				.'<button id="btnPreview" class="btn btn-default" onclick="preview(); return false;">プレビュー</button> '
+				.'<button id="btnPreview" class="btn btn-default" onclick="preview(); return false;">'.__('Preview').'</button> '
 				.$this->Form->submit(__('保存'), Configure::read('form_submit_defaults'))
 				.Configure::read('form_submit_after');
 			echo $this->Form->end();

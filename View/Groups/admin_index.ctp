@@ -2,12 +2,12 @@
 <div class="admin-groups-index">
 	<div class="ib-page-title"><?= __('グループ一覧'); ?></div>
 	<div class="buttons_container">
-		<button type="button" class="btn btn-primary btn-add" onclick="location.href='<?= Router::url(['action' => 'add']) ?>'">+ 追加</button>
+	<button type="button" class="btn btn-primary btn-add" onclick="location.href='<?= Router::url(['action' => 'add']) ?>'">+ <?= __('Add'); ?></button>
 	</div>
 	<table>
 	<thead>
 	<tr>
-		<th><?= $this->Paginator->sort('title', 'グループ名'); ?></th>
+		<th><?= $this->Paginator->sort('title', __('グループ名')); ?></th>
 		<th nowrap class="col-course"><?= __('受講コース'); ?></th>
 		<th class="ib-col-date"><?= $this->Paginator->sort('created', __('作成日時')); ?></th>
 		<th class="ib-col-date"><?= $this->Paginator->sort('modified', __('更新日時')); ?></th>

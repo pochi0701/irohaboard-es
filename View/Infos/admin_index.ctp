@@ -2,7 +2,7 @@
 <div class="admin-infos-index">
 	<div class="ib-page-title"><?= __('お知らせ一覧'); ?></div>
 	<div class="buttons_container">
-		<button type="button" class="btn btn-primary btn-add" onclick="location.href='<?= Router::url(['action' => 'add']) ?>'">+ 追加</button>
+	<button type="button" class="btn btn-primary btn-add" onclick="location.href='<?= Router::url(['action' => 'add']) ?>'">+ <?= __('Add'); ?></button>
 	</div>
 	<table cellpadding="0" cellspacing="0">
 	<thead>

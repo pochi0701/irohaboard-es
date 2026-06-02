@@ -1,0 +1,843 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: irohaboard\n"
+"POT-Creation-Date: 2026-05-18 00:00+0000\n"
+"PO-Revision-Date: 2026-05-18 00:00+0000\n"
+"Language: spa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Actions"
+msgstr "Acciones"
+
+msgid "Add"
+msgstr "Agregar"
+
+msgid "All"
+msgstr "Todos"
+
+msgid "An error occurred during communication"
+msgstr "Ocurrió un error durante la comunicación."
+
+msgid "Close"
+msgstr "Cerrar"
+
+msgid "CSV出力"
+msgstr "Exportar CSV"
+
+msgid "CSV出力(詳細)"
+msgstr "Exportar CSV (detallado)"
+
+msgid "CSVの形式 ( * : 必須項目)"
+msgstr "Formato del CSV (*: campo obligatorio)"
+
+msgid "Deletion is disabled in demo mode"
+msgstr "No se puede eliminar en el modo demo."
+
+msgid "Duplication is disabled in demo mode"
+msgstr "No se puede duplicar en el modo demo."
+
+msgid "Export"
+msgstr "Exportar"
+
+msgid "Failed to upload the image"
+msgstr "No se pudo subir la imagen."
+
+msgid "File not found"
+msgstr "Archivo no encontrado"
+
+msgid "Import"
+msgstr "Importar"
+
+msgid "1行目はヘッダー行として扱われます。"
+msgstr "La primera fila se tratará como encabezado."
+
+msgid "CSVファイルの文字コードは「Shift-JIS」を使用してください。(UTF-8は使用できません。)"
+msgstr "Use Shift-JIS como codificación del archivo CSV. (No se puede usar UTF-8.)"
+
+msgid "Installer"
+msgstr "Instalador"
+
+msgid "Invalid access"
+msgstr "Acceso no válido"
+
+msgid "Invalid content"
+msgstr "Contenido no válido"
+
+msgid "Invalid contents question"
+msgstr "Pregunta no válida"
+
+msgid "Invalid course"
+msgstr "Curso no válido"
+
+msgid "Invalid filename"
+msgstr "Nombre de archivo no válido"
+
+msgid "Invalid group"
+msgstr "Grupo no válido"
+
+msgid "Invalid info"
+msgstr "Aviso no válido"
+
+msgid "Invalid user"
+msgstr "Usuario no válido"
+
+msgid "No options have been added"
+msgstr "No se agregaron opciones."
+
+msgid "Please enter an option"
+msgstr "Ingrese una opción."
+
+msgid "Please enter an option within 100 characters"
+msgstr "Ingrese una opción de hasta 100 caracteres."
+
+msgid "Preview"
+msgstr "Vista previa"
+
+msgid "Select file"
+msgstr "Seleccionar archivo"
+
+msgid "The content could not be deleted. Please, try again."
+msgstr "No se pudo eliminar el contenido. Inténtelo nuevamente."
+
+msgid "The content could not be saved. Please, try again."
+msgstr "No se pudo guardar el contenido. Inténtelo nuevamente."
+
+msgid "The contents question could not be deleted. Please, try again."
+msgstr "No se pudo eliminar la pregunta. Inténtelo nuevamente."
+
+msgid "The contents question could not be saved. Please, try again."
+msgstr "No se pudo guardar la pregunta. Inténtelo nuevamente."
+
+msgid "The course could not be saved. Please, try again."
+msgstr "No se pudo guardar el curso. Inténtelo nuevamente."
+
+msgid "The group could not be deleted. Please, try again."
+msgstr "No se pudo eliminar el grupo. Inténtelo nuevamente."
+
+msgid "The group could not be saved. Please, try again."
+msgstr "No se pudo guardar el grupo. Inténtelo nuevamente."
+
+msgid "The info could not be deleted. Please, try again."
+msgstr "No se pudo eliminar el aviso. Inténtelo nuevamente."
+
+msgid "The info could not be saved. Please, try again."
+msgstr "No se pudo guardar el aviso. Inténtelo nuevamente."
+
+msgid "The number of options exceeds the maximum"
+msgstr "La cantidad de opciones supera el máximo permitido."
+
+msgid "The question text has not been entered"
+msgstr "No se ingresó el texto de la pregunta."
+
+msgid "The record could not be saved. Please, try again."
+msgstr "No se pudo guardar el historial de aprendizaje. Inténtelo nuevamente."
+
+msgid "The selected file cannot be uploaded"
+msgstr "No se puede subir el archivo seleccionado."
+
+msgid "This browser does not support file drop"
+msgstr "Este navegador no admite soltar archivos."
+
+msgid "Updater"
+msgstr "Actualizador"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "[%s] を削除してもよろしいですか?"
+msgstr "¿Desea eliminar [%s]?"
+
+msgid "(非公開)"
+msgstr "(No publicado)"
+
+msgid "[非公開]と設定した場合、管理者権限でログインした場合のみ表示されます。"
+msgstr "Si se establece como [No publicado], solo será visible al iniciar sesión con permisos de administrador."
+
+msgid "お知らせ"
+msgstr "Avisos"
+
+msgid "お知らせが保存されました"
+msgstr "El aviso se ha guardado."
+
+msgid "お知らせが削除されました"
+msgstr "El aviso se ha eliminado."
+
+msgid "お知らせはありません"
+msgstr "No hay avisos."
+
+msgid "お知らせ一覧"
+msgstr "Lista de avisos"
+
+msgid "このIPアドレスからのエクスポートは許可されていません。"
+msgstr "La exportación desde esta dirección IP no está permitida."
+
+msgid "インポートが完了しました"
+msgstr "La importación se completó."
+
+msgid "インポートに失敗しました"
+msgstr "La importación falló."
+
+msgid "インポートファイルが指定されていません"
+msgstr "No se especificó el archivo de importación."
+
+msgid "インポート処理がタイムアウトする場合は、CSVファイルを分割してインポートしてください。"
+msgstr "Si la importación vence por tiempo, divida el archivo CSV e impórtelo en partes."
+
+msgid "インストール"
+msgstr "Instalar"
+
+msgid "インストールが完了しました"
+msgstr "La instalación se completó."
+
+msgid "エラー"
+msgstr "Error"
+
+msgid "キャンセル"
+msgstr "Cancelar"
+
+msgid "グループ"
+msgstr "Grupo"
+
+msgid "グループ一覧"
+msgstr "Lista de grupos"
+
+msgid "グループ名"
+msgstr "Nombre del grupo"
+
+msgid "グループ情報を保存しました"
+msgstr "La información del grupo se ha guardado."
+
+msgid "グループ情報を削除しました"
+msgstr "La información del grupo se ha eliminado."
+
+msgid "コピーライト"
+msgstr "Copyright"
+
+msgid "コンテンツ"
+msgstr "Contenido"
+
+msgid "コンテンツが保存されました"
+msgstr "El contenido se ha guardado."
+
+msgid "コンテンツが削除されました"
+msgstr "El contenido se ha eliminado."
+
+msgid "コンテンツ一覧"
+msgstr "Lista de contenidos"
+
+msgid "コンテンツ名"
+msgstr "Nombre del contenido"
+
+msgid "コンテンツ種別"
+msgstr "Tipo de contenido"
+
+msgid "コース"
+msgstr "Curso"
+
+msgid "コースが保存されました"
+msgstr "El curso se ha guardado."
+
+msgid "コースが削除されました"
+msgstr "El curso se ha eliminado."
+
+msgid "コース一覧"
+msgstr "Lista de cursos"
+
+msgid "コース名"
+msgstr "Nombre del curso"
+
+msgid "コース紹介"
+msgstr "Introducción del curso"
+
+msgid "システム名"
+msgstr "Nombre del sistema"
+
+msgid "システム設定"
+msgstr "Configuración del sistema"
+
+msgid "ステータス"
+msgstr "Estado"
+
+msgid "セッションの有効期限が切れました。もう一度ログインしてください。"
+msgstr "La sesión ha expirado. Inicie sesión nuevamente."
+
+msgid "タイトル"
+msgstr "Título"
+
+msgid "テスト"
+msgstr "Prueba"
+
+msgid "テスト問題一覧"
+msgstr "Lista de preguntas de la prueba"
+
+msgid "テスト結果"
+msgstr "Resultado de la prueba"
+
+msgid "テスト結果画面にて不正解の問題の表示方法を指定します。正解時は解説のみが表示されます。"
+msgstr "Especifica cómo mostrar las preguntas incorrectas en la pantalla de resultados. Si la respuesta es correcta, solo se mostrará la explicación."
+
+msgid "テーマカラー"
+msgstr "Color del tema"
+
+msgid "トークンの有効期限が切れています。前の画面に戻り、画面を一度リフレッシュしてから再度お試しください。"
+msgstr "El token ha expirado. Vuelva a la pantalla anterior, recargue la página una vez e inténtelo de nuevo."
+
+msgid "トークンの有効期限が切れました。もう一度ログインしてください。"
+msgstr "El token ha expirado. Inicie sesión nuevamente."
+
+msgid "ドラッグアンドドロップでコンテンツの並び順が変更できます。"
+msgstr "Puede cambiar el orden de los contenidos arrastrando y soltando."
+
+msgid "ドラッグアンドドロップでコースの並び順が変更できます。"
+msgstr "Puede cambiar el orden de los cursos arrastrando y soltando."
+
+msgid "ドラッグアンドドロップで出題順が変更できます。"
+msgstr "Puede cambiar el orden de las preguntas arrastrando y soltando."
+
+msgid "ドラッグアンドドロップで表示順が変更できます。"
+msgstr "Puede cambiar el orden de visualización arrastrando y soltando."
+
+msgid "パスワード"
+msgstr "Contraseña"
+
+msgid "パスワード(確認用)"
+msgstr "Contraseña (confirmación)"
+
+msgid "パスワードが変更されました"
+msgstr "La contraseña ha sido cambiada."
+
+msgid "パスワードを保存できませんでした"
+msgstr "No se pudo guardar la contraseña."
+
+msgid "パスワードを入力して下さい"
+msgstr "Ingrese la contraseña."
+
+msgid "パスワードの指定は任意です。指定されていない場合は、既存のパスワードが保持されます。"
+msgstr "La contraseña es opcional. Si no se especifica, se conservará la contraseña existente."
+
+msgid "ファイル名"
+msgstr "Nombre del archivo"
+
+msgid "ページ"
+msgstr "Página"
+
+msgid "メールアドレス"
+msgstr "Correo electrónico"
+
+msgid "ユーザ"
+msgstr "Usuario"
+
+msgid "ユーザが削除されました"
+msgstr "El usuario ha sido eliminado."
+
+msgid "ユーザを削除できませんでした"
+msgstr "No se pudo eliminar el usuario."
+
+msgid "ユーザ一覧"
+msgstr "Lista de usuarios"
+
+msgid "ユーザ情報が保存されました"
+msgstr "La información del usuario se ha guardado."
+
+msgid "ユーザ情報が保存できませんでした"
+msgstr "No se pudo guardar la información del usuario."
+
+msgid "ユーザ情報が格納されたCSVファイルを選択し、インポートを行って下さい。"
+msgstr "Seleccione el archivo CSV que contiene la información de los usuarios e impórtelo."
+
+msgid "ログアウト"
+msgstr "Cerrar sesión"
+
+msgid "ログイン"
+msgstr "Iniciar sesión"
+
+msgid "ログインID"
+msgstr "ID de inicio de sesión"
+
+msgid "ログインID、もしくはパスワードが正しくありません"
+msgstr "El ID de inicio de sesión o la contraseña son incorrectos."
+
+msgid "ログインID、もしくはパスワードの形式が正しくありません"
+msgstr "El formato del ID de inicio de sesión o de la contraseña no es correcto."
+
+msgid "ログイン状態を保持"
+msgstr "Mantener la sesión iniciada"
+
+msgid "ログイン試行回数が上限に達しました。1時間後に再度お試しください。"
+msgstr "Se alcanzó el límite de intentos de inicio de sesión. Inténtelo nuevamente después de 1 hora."
+
+msgid "一覧を表示"
+msgstr "Ver lista"
+
+msgid "不合格"
+msgstr "No aprobado"
+
+msgid "不正なリクエストです。"
+msgstr "La solicitud no es válida."
+
+msgid "不正解"
+msgstr "Incorrecto"
+
+msgid "不正解時の表示"
+msgstr "Mostrar en caso de respuesta incorrecta"
+
+msgid "中断"
+msgstr "Interrumpido"
+
+msgid "件"
+msgstr "elementos"
+
+msgid "作成日時"
+msgstr "Fecha de creación"
+
+msgid "保存"
+msgstr "Guardar"
+
+msgid "備考"
+msgstr "Observaciones"
+
+msgid "入力された「パスワード」と「パスワード（確認用）」が一致しません"
+msgstr "La contraseña ingresada y la contraseña de confirmación no coinciden."
+
+msgid "入力例"
+msgstr "Ejemplo"
+
+msgid "全体のお知らせ"
+msgstr "Avisos generales"
+
+msgid "内容"
+msgstr "Contenido"
+
+msgid "内部エラーが発生しました。"
+msgstr "Se produjo un error interno."
+
+msgid "出題数 (1-100問)"
+msgstr "Cantidad de preguntas (1-100)"
+
+msgid "制限時間 (1-100分)"
+msgstr "Tiempo límite (1-100 min)"
+
+msgid "制限時間を過ぎましたので自動採点を行います。"
+msgstr "Se superó el tiempo límite, por lo que se calificará automáticamente."
+
+msgid "削除"
+msgstr "Eliminar"
+
+msgid "前回学習日"
+msgstr "Fecha del último estudio"
+
+msgid "受講するコースを選択して下さい。(複数選択可)"
+msgstr "Seleccione los cursos que se tomarán. (Se permite selección múltiple)"
+
+msgid "受講コース"
+msgstr "Cursos asignados"
+
+msgid "受講コース・・・%d列"
+msgstr "Cursos asignados... %d columnas"
+
+msgid "受講可能なコースはありません"
+msgstr "No hay cursos disponibles."
+
+msgid "受講者"
+msgstr "Alumno"
+
+msgid "受講者ログイン"
+msgstr "Inicio de sesión del alumno"
+
+msgid "受講者ログインへ"
+msgstr "Ir al inicio de sesión del alumno"
+
+msgid "合否"
+msgstr "Aprobado / Reprobado"
+
+msgid "合格"
+msgstr "Aprobado"
+
+msgid "合格とする得点率 (1-100%)"
+msgstr "Porcentaje para aprobar (1-100%)"
+
+msgid "合格基準得点"
+msgstr "Puntaje mínimo de aprobación"
+
+msgid "合格点"
+msgstr "Puntaje de aprobación"
+
+msgid "合計"
+msgstr "Total"
+
+msgid "問"
+msgstr "pregunta(s)"
+
+msgid "問題/質問"
+msgstr "Pregunta"
+
+msgid "問題が保存されました"
+msgstr "La pregunta se ha guardado."
+
+msgid "問題が削除されました"
+msgstr "La pregunta se ha eliminado."
+
+msgid "問題文"
+msgstr "Enunciado"
+
+msgid "回答"
+msgstr "Respuesta"
+
+msgid "回答内容を送信しました"
+msgstr "Se envió la respuesta."
+
+msgid "回答形式"
+msgstr "Tipo de respuesta"
+
+msgid "変更することで他のコースにコンテンツを移動できます。"
+msgstr "Al cambiarlo, puede mover el contenido a otro curso."
+
+msgid "学習"
+msgstr "Aprendizaje"
+
+msgid "学習回数"
+msgstr "Cantidad de estudios"
+
+msgid "学習履歴"
+msgstr "Historial de aprendizaje"
+
+msgid "学習履歴を保存しました"
+msgstr "Se guardó el historial de aprendizaje."
+
+msgid "学習履歴を削除"
+msgstr "Eliminar historial de aprendizaje"
+
+msgid "学習履歴を削除してもよろしいですか？"
+msgstr "¿Desea eliminar el historial de aprendizaje?"
+
+msgid "学習履歴を削除しました"
+msgstr "Se eliminó el historial de aprendizaje."
+
+msgid "学習履歴一覧"
+msgstr "Lista del historial de aprendizaje"
+
+msgid "学習日時"
+msgstr "Fecha y hora de estudio"
+
+msgid "学習時間"
+msgstr "Tiempo de estudio"
+
+msgid "学習開始日"
+msgstr "Fecha de inicio"
+
+msgid "完了"
+msgstr "Completado"
+
+msgid "対象グループ"
+msgstr "Grupos destinatarios"
+
+msgid "対象日時"
+msgstr "Fecha y hora objetivo"
+
+msgid "形式"
+msgstr "Formato"
+
+msgid "得点"
+msgstr "Puntaje"
+
+msgid "戻る"
+msgstr "Volver"
+
+msgid "所属するグループを選択して下さい。(複数選択可)"
+msgstr "Seleccione los grupos a los que pertenece. (Se permite selección múltiple)"
+
+msgid "所属グループ"
+msgstr "Grupos asignados"
+
+msgid "所属グループ・・・%d列"
+msgstr "Grupos asignados... %d columnas"
+
+msgid "所属コース"
+msgstr "Curso asignado"
+
+msgid "指定されたアドレス %s へのリクエストは無効です。"
+msgstr "La solicitud a la dirección especificada %s no es válida."
+
+msgid "指定した場合、制限時間を過ぎると自動的に採点されます。"
+msgstr "Si se especifica, al superar el tiempo límite se calificará automáticamente."
+
+msgid "指定した場合、合否の判定が行われ、指定しない場合は無条件に合格となります。"
+msgstr "Si se especifica, se evaluará si aprueba o no; si no se especifica, se considerará aprobado automáticamente."
+
+msgid "指定した場合、登録した問題の中からランダムに出題され、指定しない場合は問題一覧画面の並び順で全問出題されます。"
+msgstr "Si se especifica, las preguntas se seleccionarán aleatoriamente entre las registradas; si no, se mostrarán todas en el orden de la lista."
+
+msgid "採点"
+msgstr "Calificar"
+
+msgid "採点してよろしいですか？"
+msgstr "¿Desea calificar ahora?"
+
+msgid "採点確認"
+msgstr "Confirmación de calificación"
+
+msgid "新しいパスワード"
+msgstr "Nueva contraseña"
+
+msgid "新しいパスワード (確認用)"
+msgstr "Nueva contraseña (confirmación)"
+
+msgid "新規お知らせ"
+msgstr "Nuevo aviso"
+
+msgid "新規グループ"
+msgstr "Nuevo grupo"
+
+msgid "新規コンテンツ"
+msgstr "Nuevo contenido"
+
+msgid "新規コース"
+msgstr "Nuevo curso"
+
+msgid "新規ユーザ"
+msgstr "Nuevo usuario"
+
+msgid "新規問題"
+msgstr "Nueva pregunta"
+
+msgid "新規質問"
+msgstr "Nueva pregunta"
+
+msgid "日付"
+msgstr "Fecha"
+
+msgid "更新日時"
+msgstr "Fecha de actualización"
+
+msgid "最終ログイン日時"
+msgstr "Último inicio de sesión"
+
+msgid "本文"
+msgstr "Texto"
+
+msgid "検索"
+msgstr "Buscar"
+
+msgid "権限"
+msgstr "Permiso"
+
+msgid "権限 (受講者 / 管理者)"
+msgstr "Permiso (Alumno / Administrador)"
+
+msgid "正解"
+msgstr "Correcto"
+
+msgid "正誤"
+msgstr "Correcto / Incorrecto"
+
+msgid "残り"
+msgstr "Restante"
+
+msgid "残り時間"
+msgstr "Tiempo restante"
+
+msgid "氏名"
+msgstr "Nombre"
+
+msgid "理解度"
+msgstr "Nivel de comprensión"
+
+msgid "理解度を選択して終了して下さい。"
+msgstr "Seleccione el nivel de comprensión para finalizar."
+
+msgid "番号"
+msgstr "N.º"
+
+msgid "種別"
+msgstr "Tipo"
+
+msgid "管理画面へのアクセス権限がありません"
+msgstr "No tiene permiso para acceder al panel de administración."
+
+msgid "管理者"
+msgstr "Administrador"
+
+msgid "管理者アカウントのログインIDとパスワードを入力し、「インストール」ボタンをクリックしてください。"
+msgstr "Ingrese el ID de inicio de sesión y la contraseña de la cuenta de administrador que desea crear y haga clic en \"Instalar\"."
+
+msgid "管理者ログイン"
+msgstr "Inicio de sesión de administrador"
+
+msgid "管理者ログインID"
+msgstr "ID de inicio de sesión del administrador"
+
+msgid "管理者ログインIDは4文字以上32文字以内で、英数字のみを使用してください。"
+msgstr "El ID de inicio de sesión del administrador debe tener entre 4 y 32 caracteres y usar solo letras y números."
+
+msgid "管理者ログインへ"
+msgstr "Ir al inicio de sesión de administrador"
+
+msgid "管理者ログイン画面へ"
+msgstr "Ir a la pantalla de inicio de sesión del administrador"
+
+msgid "経過"
+msgstr "Transcurrido"
+
+msgid "結果"
+msgstr "Resultado"
+
+msgid "編集"
+msgstr "Editar"
+
+msgid "複製"
+msgstr "Duplicar"
+
+msgid "解答/回答"
+msgstr "Respuesta"
+
+msgid "解説"
+msgstr "Explicación"
+
+msgid "設定"
+msgstr "Configuración"
+
+msgid "設定が保存されました"
+msgstr "La configuración se ha guardado."
+
+msgid "設定されていません"
+msgstr "No configurado"
+
+msgid "※未回答の項目があります。"
+msgstr "Hay preguntas sin responder."
+
+msgid "質問が保存されました"
+msgstr "La pregunta se ha guardado."
+
+msgid "質問が削除されました"
+msgstr "La pregunta se ha eliminado."
+
+msgid "質問一覧"
+msgstr "Lista de preguntas"
+
+msgid "質問文"
+msgstr "Texto de la pregunta"
+
+msgid "送信"
+msgstr "Enviar"
+
+msgid "送信してよろしいですか？"
+msgstr "¿Desea enviar?"
+
+msgid "送信確認"
+msgstr "Confirmación de envío"
+
+msgid "選択しない場合、全てのユーザが対象となります。"
+msgstr "Si no se selecciona, se aplicará a todos los usuarios."
+
+msgid "選択形式"
+msgstr "Selección"
+
+msgid "選択肢"
+msgstr "Opciones"
+
+msgid "選択肢／正解"
+msgstr "Opciones / Correctas"
+
+msgid "選択肢は100文字以内で入力してください"
+msgstr "Ingrese cada opción dentro de 100 caracteres."
+
+msgid "選択肢の数が最大値を超えています"
+msgstr "La cantidad de opciones supera el máximo."
+
+msgid "選択肢を入力してください"
+msgstr "Ingrese una opción."
+
+msgid "～"
+msgstr "a"
+
+msgid "「＋」で選択肢の追加、「−」で選択された選択肢を削除します。（※最大10個まで）"
+msgstr "Use “＋” para agregar opciones y “−” para eliminar la opción seleccionada. (Máximo 10)"
+
+msgid "また選択された選択肢が正解となります。Ctrlキーを押下したまま選択することで、複数の正解の設定も可能です。"
+msgstr "Las opciones seleccionadas se consideran correctas. Manteniendo presionada la tecla Ctrl, también puede configurar varias respuestas correctas."
+
+msgid "アップロード"
+msgstr "Subir"
+
+msgid "アップロード可能なファイル形式"
+msgstr "Formatos de archivo permitidos"
+
+msgid "アップロード可能なファイルサイズ"
+msgstr "Tamaño de archivo permitido"
+
+msgid "ここにファイルをドロップするか、ファイルを選択後、アップロードボタンをクリックしてください。"
+msgstr "Suelte el archivo aquí o selecciónelo y luego haga clic en el botón de subida."
+
+msgid "このブラウザはファイルのドロップをサポートしておりません。"
+msgstr "Este navegador no admite soltar archivos."
+
+msgid "データベースのアップデートが完了しました。"
+msgstr "La actualización de la base de datos se completó."
+
+msgid "ファイルが複数ある場合には、ZIP形式で圧縮してアップロードを行ってください。"
+msgstr "Si hay varios archivos, comprímalos en formato ZIP y súbalos."
+
+msgid "バイト"
+msgstr "bytes"
+
+msgid "リッチテキスト"
+msgstr "Texto enriquecido"
+
+msgid "ラベル"
+msgstr "Etiqueta"
+
+msgid "一覧"
+msgstr "Lista"
+
+msgid "公開"
+msgstr "Publicado"
+
+msgid "公開する"
+msgstr "Publicar"
+
+msgid "公開しない"
+msgstr "No publicar"
+
+msgid "動画"
+msgstr "Video"
+
+msgid "動画 <span>(動画をアップロードします。HTML5のVIDEOタグで再生できるものに限られます。)</span>"
+msgstr "Video <span>(Sube un video. Solo se admiten archivos que puedan reproducirse con la etiqueta VIDEO de HTML5.)</span>"
+
+msgid "合格とする得点率"
+msgstr "Porcentaje para aprobar"
+
+msgid "最大"
+msgstr "Máximo"
+
+msgid "%s のインストール及び管理者アカウントの作成を行います。"
+msgstr "Se realizará la instalación de %s y la creación de la cuenta de administrador."
+
+msgid "既にインストールされています。"
+msgstr "Ya está instalado."
+
+msgid "新規"
+msgstr "Nuevo"
+
+msgid "有効"
+msgstr "Activo"
+
+msgid "未完了"
+msgstr "Incompleto"
+
+msgid "無効"
+msgstr "Inactivo"
+
+msgid "記述式"
+msgstr "Texto libre"
+
+msgid "質問文が入力されていません"
+msgstr "No se ha ingresado el texto de la pregunta."
+
+msgid "選択肢が追加されていません"
+msgstr "No se han agregado opciones."
+
+msgid "非公開"
+msgstr "No publicado"

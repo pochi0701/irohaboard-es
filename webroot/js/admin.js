@@ -1,5 +1,14 @@
 function CommonUtility() {}
 
+CommonUtility.prototype.getMessage = function (key, fallback)
+{
+	if ((typeof window.IB_MESSAGES !== 'undefined') && (window.IB_MESSAGES[key])) {
+		return window.IB_MESSAGES[key];
+	}
+
+	return fallback;
+}
+
 // リッチテキストエディタの設定
 CommonUtility.prototype.setRichTextEditor = function (selector, upload_image_maxsize, base_url)
 {
@@ -8,7 +17,7 @@ CommonUtility.prototype.setRichTextEditor = function (selector, upload_image_max
 		upload_image_maxsize = (1024 * 1024 * 2);
 	
 	$(selector).summernote({
-		lang: "ja-JP",
+		lang: (typeof window.IB_EDITOR_LANG !== 'undefined') ? window.IB_EDITOR_LANG : 'en-US',
 //		fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New']
 		maximumImageFileSize: upload_image_maxsize,
 		callbacks: {
@@ -34,17 +43,17 @@ CommonUtility.prototype.setRichTextEditor = function (selector, upload_image_max
 						}
 						else
 						{
-							alert('画像のアップロードに失敗しました');
+							alert(CommonUtil.getMessage('uploadFailed', 'Failed to upload the image'));
 						}
 					},
 					error: function(url) {
-						alert('通信中にエラーが発生しました');
+						alert(CommonUtil.getMessage('requestError', 'An error occurred during communication'));
 					}
 				});
 			},
 			onImageUploadError: function(e)
 			{
-				alert('指定されたファイルはアップロードできません');
+				alert(CommonUtil.getMessage('invalidUploadFile', 'The selected file cannot be uploaded'));
 			}
 		}
 	});
@@ -76,4 +85,3 @@ CommonUtility.prototype.getHHMMSSbySec = function (sec)
 
 
 var CommonUtil = new CommonUtility();
-

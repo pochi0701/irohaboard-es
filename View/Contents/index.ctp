@@ -164,7 +164,7 @@ $is_admin_record = $this->isAdminPage() && $this->isRecordPage();
 			$title_link = h($content['Content']['title']);
 		
 		if($content['Content']['status'] == 0)
-			$title_link .= ' <span class="status-closed">(非公開)</span>';
+			$title_link .= ' <span class="status-closed">'.__('(非公開)').'</span>';
 		
 		//debug($content);
 		?>

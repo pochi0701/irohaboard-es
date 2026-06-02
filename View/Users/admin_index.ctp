@@ -13,9 +13,9 @@
 	<div class="ib-page-title"><?= __('ユーザ一覧'); ?></div>
 	<div class="buttons_container">
 		<?php if($loginedUser['role'] == 'admin') { ?>
-		<button type="button" class="btn btn-primary btn-export" onclick="downloadCSV();">エクスポート</button>
-		<button type="button" class="btn btn-primary btn-import" onclick="location.href='<?= Router::url(['action' => 'import']) ?>'">インポート</button>
-		<button type="button" class="btn btn-primary btn-add" onclick="location.href='<?= Router::url(['action' => 'add']) ?>'">+ 追加</button>
+	<button type="button" class="btn btn-primary btn-export" onclick="downloadCSV();"><?= __('Export'); ?></button>
+	<button type="button" class="btn btn-primary btn-import" onclick="location.href='<?= Router::url(['action' => 'import']) ?>'"><?= __('Import'); ?></button>
+	<button type="button" class="btn btn-primary btn-add" onclick="location.href='<?= Router::url(['action' => 'add']) ?>'">+ <?= __('Add'); ?></button>
 		<?php }?>
 	</div>
 	<div class="ib-horizontal">
@@ -25,7 +25,7 @@
 			'label'    => __('グループ'),
 			'options'  => $groups, 
 			'selected' => $group_id, 
-			'empty'    => '全て', 
+			'empty'    => __('All'), 
 			'onchange' => 'submit(this.form);'
 		]);
 		echo $this->Form->searchField('username',		['label' => __('ログインID')]);
@@ -40,7 +40,7 @@
 	<tr>
 		<th nowrap><?= $this->Paginator->sort('username', __('ログインID')); ?></th>
 		<th nowrap class="col-width"><?= $this->Paginator->sort('name', __('氏名')); ?></th>
-		<th nowrap><?= $this->Paginator->sort('role', '権限'); ?></th>
+		<th nowrap><?= $this->Paginator->sort('role', __('権限')); ?></th>
 		<th nowrap><?= __('所属グループ'); ?></th>
 		<th nowrap class="ib-col-datetime"><?= __('受講コース'); ?></th>
 		<th class="ib-col-datetime"><?= $this->Paginator->sort('last_logined', __('最終ログイン日時')); ?></th>

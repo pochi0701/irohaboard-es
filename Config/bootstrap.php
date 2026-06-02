@@ -74,6 +74,9 @@ App::build(
 	]
 );
 
+Configure::write('Config.language', 'spa');
+Configure::write('I18n.preferApp', true);
+
 /**
  * Custom Inflector rules can be set to correctly pluralize or singularize table, model, controller names or whatever other
  * string is passed to the inflection functions

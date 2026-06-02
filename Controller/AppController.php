@@ -17,6 +17,8 @@ App::import('Vendor', 'Utils');
  */
 class AppController extends Controller
 {
+	const DEFAULT_UI_LANGUAGE = 'spa';
+
 	/**
 	 * 使用するコンポーネント
 	 * https://book.cakephp.org/2/ja/core-libraries/toc-components.html
@@ -49,11 +51,25 @@ class AppController extends Controller
 	public $uses = ['Setting', 'Group'];
 	public $viewClass = 'App'; // 独自のビュークラスを指定
 
+	protected $availableUiLanguages = [
+		'spa' => [
+			'label' => 'Español',
+			'html' => 'es-PY',
+			'editor' => 'en-US',
+		],
+		'jpn' => [
+			'label' => '日本語',
+			'html' => 'ja',
+			'editor' => 'ja-JP',
+		],
+	];
+
 	/**
 	 * コールバック（コントローラのアクションロジック実行前に実行）
 	 */
 	public function beforeFilter()
 	{
+		$this->initializeUiLanguage();
 		$this->set('loginedUser', $this->readAuthUser()); // ログインユーザ情報（旧バージョン用）
 		
 		// HTTPS通信の場合、Cookie を secure に設定
@@ -131,6 +147,144 @@ class AppController extends Controller
 			$this->Auth->loginAction = ['controller' => 'users', 'action' => 'login', 'admin' => false];
 			$this->Auth->loginRedirect = ['controller' => 'users', 'action' => 'index', 'admin' => false];
 			$this->Auth->logoutRedirect = ['controller' => 'users', 'action' => 'login', 'admin' => false];
+		}
+	}
+
+	protected function initializeUiLanguage()
+	{
+		$locale = self::DEFAULT_UI_LANGUAGE;
+		$queryLocale = isset($this->request->query['lang']) ? $this->request->query['lang'] : null;
+		$sessionLocale = $this->readSession('Config.language');
+		$cookieLocale = $this->readCookie('IB_LANG');
+
+		if($this->isSupportedUiLanguage($queryLocale))
+		{
+			$locale = $queryLocale;
+		}
+		elseif($this->isSupportedUiLanguage($sessionLocale))
+		{
+			$locale = $sessionLocale;
+		}
+		elseif($this->isSupportedUiLanguage($cookieLocale))
+		{
+			$locale = $cookieLocale;
+		}
+
+		Configure::write('Config.language', $locale);
+		$this->writeSession('Config.language', $locale);
+		$this->writeCookie('IB_LANG', $locale, true, '+1 year');
+
+		$currentLanguage = $this->availableUiLanguages[$locale];
+		$this->set('currentUiLanguage', $locale);
+		$this->set('currentHtmlLang', $currentLanguage['html']);
+		$this->set('currentEditorLang', $currentLanguage['editor']);
+		$this->set('availableUiLanguages', $this->getUiLanguageLinks($locale));
+		$this->localizeUiConfig();
+		$this->set('jsMessages', $this->getJsMessages());
+	}
+
+	protected function isSupportedUiLanguage($locale)
+	{
+		return isset($this->availableUiLanguages[$locale]);
+	}
+
+	protected function getUiLanguageLinks($currentLocale)
+	{
+		$currentUrl = $this->request->here(false);
+		$urlInfo = parse_url($currentUrl);
+		$path = empty($urlInfo['path']) ? '/' : $urlInfo['path'];
+		$query = [];
+
+		if(!empty($urlInfo['query']))
+		{
+			parse_str($urlInfo['query'], $query);
+		}
+
+		$languages = [];
+
+		foreach($this->availableUiLanguages as $locale => $config)
+		{
+			$query['lang'] = $locale;
+			$url = $path;
+
+			if(!empty($query))
+			{
+				$url .= '?'.http_build_query($query);
+			}
+
+			$languages[] = [
+				'code' => $locale,
+				'label' => $config['label'],
+				'url' => $url,
+				'active' => ($locale === $currentLocale),
+			];
+		}
+
+		return $languages;
+	}
+
+	protected function getJsMessages()
+	{
+		return [
+			'add' => __('Add'),
+			'close' => __('Close'),
+			'deleteDisabledDemo' => __('Deletion is disabled in demo mode'),
+			'duplicateDisabledDemo' => __('Duplication is disabled in demo mode'),
+			'dropNotSupported' => __('This browser does not support file drop'),
+			'export' => __('Export'),
+			'import' => __('Import'),
+			'login' => __('ログイン'),
+			'preview' => __('Preview'),
+			'uploadButton' => __('Select file'),
+			'uploadFailed' => __('Failed to upload the image'),
+			'requestError' => __('An error occurred during communication'),
+			'invalidUploadFile' => __('The selected file cannot be uploaded'),
+			'enterOption' => __('Please enter an option'),
+			'optionTooLong' => __('Please enter an option within 100 characters'),
+			'tooManyOptions' => __('The number of options exceeds the maximum'),
+			'questionRequired' => __('The question text has not been entered'),
+			'optionsRequired' => __('No options have been added'),
+			'timeLimitAutoSubmit' => __('制限時間を過ぎましたので自動採点を行います。'),
+		];
+	}
+
+	protected function localizeUiConfig()
+	{
+		$configKeys = [
+			'group_status',
+			'course_status',
+			'content_status',
+			'content_kind',
+			'content_kind_comment',
+			'content_category',
+			'question_type',
+			'wrong_mode',
+			'record_result',
+			'record_complete',
+			'is_correct',
+			'record_understanding',
+			'record_understanding_pc',
+			'record_understanding_spn',
+			'user_role',
+		];
+
+		foreach($configKeys as $configKey)
+		{
+			$values = Configure::read($configKey);
+
+			if(!is_array($values))
+			{
+				continue;
+			}
+
+			$translated = [];
+
+			foreach($values as $key => $value)
+			{
+				$translated[$key] = is_string($value) ? __($value) : $value;
+			}
+
+			Configure::write($configKey, $translated);
 		}
 	}
 
