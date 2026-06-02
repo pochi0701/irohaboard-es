@@ -1,7 +1,7 @@
 <div class="text-center">
 <?php
 echo $this->Paginator->counter([
-	'format' => __('Total').' : {:count}'.__('registros').'　{:page} / {:pages}'.__('páginas')
+	'format' => __('合計').' : {:count}'.__('件').'　{:page} / {:pages}'.__('ページ')
 ]);
 ?>
 </div>

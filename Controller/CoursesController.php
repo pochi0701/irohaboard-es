@@ -58,7 +58,7 @@ class CoursesController extends AppController
 	{
 		if($this->isEditPage() && !$this->Course->exists($course_id))
 		{
-			throw new NotFoundException(__('Acceso inválido'));
+			throw new NotFoundException(__('Invalid course'));
 		}
 		
 		if($this->request->is(['post', 'put']))
@@ -71,12 +71,12 @@ class CoursesController extends AppController
 			
 			if($this->Course->save($this->request->data))
 			{
-				$this->Flash->success(__('El curso ha sido guardado'));
+				$this->Flash->success(__('コースが保存されました'));
 				return $this->redirect(['action' => 'index']);
 			}
 			else
 			{
-				$this->Flash->error(__('No se pudo guardar el curso. Por favor, intente nuevamente.'));
+				$this->Flash->error(__('The course could not be saved. Please, try again.'));
 			}
 		}
 		else
@@ -97,12 +97,12 @@ class CoursesController extends AppController
 		$this->Course->id = $course_id;
 		if(!$this->Course->exists())
 		{
-			throw new NotFoundException(__('Curso inválido'));
+			throw new NotFoundException(__('Invalid course'));
 		}
 
 		$this->request->allowMethod('post', 'delete');
 		$this->Course->deleteCourse($course_id);
-		$this->Flash->success(__('El curso ha sido eliminado'));
+		$this->Flash->success(__('コースが削除されました'));
 
 		return $this->redirect(['action' => 'index']);
 	}

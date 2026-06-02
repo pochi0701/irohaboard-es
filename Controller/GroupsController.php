@@ -66,19 +66,19 @@ class GroupsController extends AppController
 	{
 		if($this->isEditPage() && !$this->Group->exists($group_id))
 		{
-			throw new NotFoundException(__('Acceso inválido'));
+			throw new NotFoundException(__('Invalid group'));
 		}
 		
 		if($this->request->is(['post', 'put']))
 		{
 			if($this->Group->save($this->request->data))
 			{
-				$this->Flash->success(__('El grupo ha sido guardado'));
+				$this->Flash->success(__('グループ情報を保存しました'));
 				return $this->redirect(['action' => 'index']);
 			}
 			else
 			{
-				$this->Flash->error(__('No se pudo guardar el grupo. Por favor, intente nuevamente.'));
+				$this->Flash->error(__('The group could not be saved. Please, try again.'));
 			}
 		}
 		else
@@ -100,18 +100,18 @@ class GroupsController extends AppController
 		
 		if(!$this->Group->exists())
 		{
-			throw new NotFoundException(__('Grupo inválido'));
+			throw new NotFoundException(__('Invalid group'));
 		}
 		
 		$this->request->allowMethod('post', 'delete');
 		
 		if($this->Group->delete())
 		{
-			$this->Flash->success(__('El grupo ha sido eliminado'));
+			$this->Flash->success(__('グループ情報を削除しました'));
 		}
 		else
 		{
-			$this->Flash->error(__('No se pudo eliminar el grupo. Por favor, intente nuevamente.'));
+			$this->Flash->error(__('The group could not be deleted. Please, try again.'));
 		}
 		
 		return $this->redirect(['action' => 'index']);
