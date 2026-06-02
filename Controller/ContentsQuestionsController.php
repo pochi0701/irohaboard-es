@@ -27,7 +27,6 @@ class ContentsQuestionsController extends AppController
 			//'csrfCheck' => false,
 			'csrfExpires' => '+3 hours',
 			'csrfLimit' => 10000,
-			'unlockedActions' => ['admin_order', 'index']
 		],
 	];
 
@@ -39,6 +38,9 @@ class ContentsQuestionsController extends AppController
 	public function index($content_id, $record_id = null)
 	{
 		$this->ContentsQuestion->recursive = 0;
+	
+		$content_id = intval($content_id);
+		$record_id = ($record_id != null) ? intval($record_id) : null;
 		
 		//------------------------------//
 		//	コンテンツ情報を取得		//
@@ -49,11 +51,17 @@ class ContentsQuestionsController extends AppController
 		//------------------------------//
 		//	権限チェック				//
 		//------------------------------//
-		// 管理者以外の場合、コンテンツの閲覧権限の確認
+		// 管理ページ以外の場合、コンテンツの閲覧権限の確認
 		if(!$this->isAdminPage())
 		{
 			if(!$this->fetchTable('Course')->hasRight($this->readAuthUser('id'), $content['Content']['course_id']))
 				throw new NotFoundException(__('Invalid access'));
+		}
+		
+		// 管理者以外の場合、非公開コンテンツへのアクセスを禁止
+		if($this->readAuthUser('role') != 'admin' && $content['Content']['status'] != 1)
+		{
+			throw new NotFoundException(__('Invalid access'));
 		}
 		
 		//------------------------------//
@@ -250,6 +258,9 @@ class ContentsQuestionsController extends AppController
 	 */
 	public function record($content_id, $record_id)
 	{
+		$content_id = intval($content_id);
+		$record_id = intval($record_id);
+		
 		$this->index($content_id, $record_id);
 		$this->render('index');
 	}

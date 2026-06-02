@@ -24,7 +24,9 @@ class AppController extends Controller
 	public $components = [
 		'DebugKit.Toolbar',
 		'Session',
-		'Cookie',
+		'Cookie' => [
+			'httpOnly' => true
+		],
 		'Flash',
 		'Auth' => [
 			'loginRedirect' => ['controller' => 'users_courses', 'action' => 'index'],
@@ -53,6 +55,20 @@ class AppController extends Controller
 	public function beforeFilter()
 	{
 		$this->set('loginedUser', $this->readAuthUser()); // ログインユーザ情報（旧バージョン用）
+		
+		// HTTPS通信の場合、Cookie を secure に設定
+		/*
+		if($this->isHTTPS())
+		{
+			$this->Cookie->secure = true;
+		}
+		*/
+		
+		// ログイン画面のみトークンチェックエラーをハンドリング
+		if(($this->action === 'login') || ($this->action === 'admin_login'))
+		{
+			$this->Security->blackHoleCallback = 'blackHole';
+		}
 		
 		// 他のサイトの設定が存在する場合、設定情報及びログイン情報をクリア
 		if($this->hasSession('Setting'))
@@ -124,6 +140,26 @@ class AppController extends Controller
 		
 		// 他のドメインからのiframeへの埋め込みの禁止
 		header("X-Frame-Options: SAMEORIGIN");
+	}
+
+	public function blackHole($type)
+	{
+		// CSRFエラー
+		if($type === 'csrf')
+		{
+			$this->Session->setFlash(__('トークンの有効期限が切れました。もう一度ログインしてください。'));
+			return $this->redirect(array('controller' => 'users', 'action' => 'login'));
+		}
+
+		// セキュリティエラー
+		if($type === 'secure')
+		{
+			$this->Session->setFlash(__('セッションの有効期限が切れました。もう一度ログインしてください。'));
+			return $this->redirect(array('controller' => 'users', 'action' => 'login'));
+		}
+
+		// 他のセキュリティ違反は BadRequest 扱い
+		throw new BadRequestException(__('不正なリクエストです。'));
 	}
 
 	/**
@@ -207,6 +243,7 @@ class AppController extends Controller
 	 */
 	protected function writeCookie($key, $value, $encrypt = true, $expires = '+2 weeks')
 	{
+		$this->Cookie->path = ini_get('session.cookie_path');
 		$this->Cookie->write($key, $value, $encrypt, $expires);
 	}
 
@@ -355,6 +392,22 @@ class AppController extends Controller
 	protected function isLoginPage()
 	{
 		return (($this->action == 'login') || ($this->action == 'admin_login'));
+	}
+
+	/**
+	 * HTTPSかを確認
+	 */
+	protected function isHTTPS()
+	{
+		return (
+			!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) !== 'off'
+		) || (
+			!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && strtolower($_SERVER['HTTP_X_FORWARDED_PROTO']) === 'https'
+		) || (
+			!empty($_SERVER['HTTP_FRONT_END_HTTPS']) && strtolower($_SERVER['HTTP_FRONT_END_HTTPS']) !== 'off'
+		) || (
+			!empty($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443
+		);
 	}
 
 	/**

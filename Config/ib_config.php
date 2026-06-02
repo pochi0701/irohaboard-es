@@ -30,13 +30,13 @@ $config['content_kind_comment']		= [
 	'url'		=> 'URL <span>(外部のWebページを学習項目として追加します。)</span>',
 	'file'		=> '配布資料 <span>(配布したいファイルをアップロードします。)</span>',
 	'test'		=> 'テスト <span>(テストを作成します。問題はテスト作成後、別画面にて追加します。)</span>',
-	'enquete'	=> 'アンケート <span>(アンケートを作成します。質問はアンケート作成後、別画面にて追加します。)',
+//	'enquete'	=> 'アンケート <span>(アンケートを作成します。質問はアンケート作成後、別画面にて追加します。)</span>',
 ];
 
 $config['content_category']	= [
 	'study'		=> '学習',
 	'test'		=> 'テスト',
-	'enquete'	=> 'アンケート',
+//	'enquete'	=> 'アンケート',
 ];
 
 $config['question_type']	= [
